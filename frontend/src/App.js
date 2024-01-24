@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React from 'react'
+import './App.css';
+import {Home}  from './Components/Home/Home';
+import {LoginSignup}  from './Components/LoginSignup/LoginSignup';
+import {NotFoundPage}  from './Components/NotFoundPage/NotFoundPage';
+import { CompilerLab } from './Components/Compiler Lab/CompilerLab';
+import { SoftwareLab } from './Components/Software Lab/SoftwareLab'
+import { ProgrammingLab } from './Components/Programming Lab/ProgrammingLab';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+      <Route path="/" element={<LoginSignup/>}/>
+      <Route path="/home" element={<Home/>}/>
+      <Route path="/home/compilerLab" element={<CompilerLab/>}/>
+      <Route path="/home/softwareLab" element={<SoftwareLab/>}/>
+      <Route path="/home/programmingLab" element={<ProgrammingLab/>}/>
+      <Route path="*" element={<NotFoundPage/>}/>
+    </Routes>
     </div>
   );
 }
