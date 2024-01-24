@@ -1,0 +1,76 @@
+h1{
+    font-size:48px;
+    font-weight: 700;
+  /*  text-decoration: underline;*/
+  /* Additional styles for the underlined heading if needed */
+}
+
+.container1{
+    width: 100%;
+    height: 100%;
+    background-color: #00000083;
+}
+.container2{
+    display:flex;
+    flex-direction: column;
+    margin:auto;
+    align-items: center;
+    width:600px;
+    background:url("C:\Users\sayoo\programming\node\login-signup\login-signup\src\Components\Assets\background.jpg") no-repeat fixed;
+    background-size: cover;
+    height:100vh;
+    /*border: 2px solid black;*/
+}
+.inputs{
+    margin: auto;
+    margin-top:55px;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+.input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:80px;
+    width:400px;
+    background:rgba(255, 255, 255, 0.521);
+    border: 2px solid black;
+    border-radius: 10px;
+    color:#000000;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */ 
+}
+.input:hover {
+    background-color: #000000cc; /* Change the background color on hover */
+    transform: scale(1.1);
+}
+.input h2 {
+    font-size: 20px; /* Initial font size */
+    transition: font-size 0.3s ease; /* Add transition for font size */
+}
+.input:hover h2 {
+    color:white;
+    font-size: 30px; /* Increase font size on hover */
+}
+
+.cool-heading {
+    color: #000000; /* Set text color */
+    font-family: 'Arial', sans-serif; /* Set font family */
+    text-align: center; /* Center align text */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Add letter spacing */
+    margin-bottom: 20px; /* Add some margin at the bottom */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle text shadow */
+  }
+  
+  .cool-heading:hover {
+    color: #ffffff; /* Change text color on hover */
+    transform: scale(1.1); /* Scale the text on hover */
+  }
+
+  .underline{
+    width: 61px;
+    height:6px;
+    border-radius:9px;
+    background: #4c00b4;
+}
