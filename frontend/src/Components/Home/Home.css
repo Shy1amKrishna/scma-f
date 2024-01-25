@@ -16,7 +16,7 @@ h1{
     margin:auto;
     align-items: center;
     width:600px;
-    background:url("C:\Users\sayoo\programming\node\login-signup\login-signup\src\Components\Assets\background.jpg") no-repeat fixed;
+    background:url("../Assets/background.jpg") no-repeat fixed;
     background-size: cover;
     height:100vh;
     /*border: 2px solid black;*/
