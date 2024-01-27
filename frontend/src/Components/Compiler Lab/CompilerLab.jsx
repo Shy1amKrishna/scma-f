@@ -43,7 +43,7 @@ export const CompilerLab = () => {
           <div className="underline"></div>
           <div className='box'>
             <div className='Cinput'>
-            <img src={Computer_icon} alt="" />
+            <img src={Computer_icon} alt="" title='Computer icons created by Freepik - Flaticon' about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'/>
             <input
               type='text'
               placeholder='System name?'
