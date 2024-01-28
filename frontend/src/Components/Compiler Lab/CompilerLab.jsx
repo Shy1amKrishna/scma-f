@@ -4,6 +4,8 @@ import Computer_icon from '../Assets/computer.png';
 
 export const CompilerLab = () => {
   const [filter, setFilter] = useState('');
+  let [systemName, SetSystemName] = useState('')
+  
 
   const systems = [
     "CSE-CSL-DES-01",
@@ -36,7 +38,8 @@ export const CompilerLab = () => {
   }
 
   function handleClick(event) {
-    console.log(event.target.textContent);
+    SetSystemName(systemName = event.target.textContent);
+    console.log(systemName);
   }
 
   return (
