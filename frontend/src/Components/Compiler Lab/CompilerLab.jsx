@@ -35,6 +35,10 @@ export const CompilerLab = () => {
     return txtValue.indexOf(filter) > -1;
   }
 
+  function handleClick(event) {
+    console.log(event.target.textContent);
+  }
+
   return (
     <>
       <div className='container1'>
@@ -52,7 +56,7 @@ export const CompilerLab = () => {
             </div>
             <ul id='Clist'>
               {systems.map((item, index) => (
-                <li key={index} style={{ display: filterList(item) ? '' : 'none' }}>{item}</li>
+                <li onClick={handleClick} key={index} style={{ display: filterList(item) ? '' : 'none' }}>{item}</li>
               ))}
             </ul>
           </div>
