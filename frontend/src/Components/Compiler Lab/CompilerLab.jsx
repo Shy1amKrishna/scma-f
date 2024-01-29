@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CompilerLab.css';
 import Computer_icon from '../Assets/computer.png';
+//import {Maintenance} from '../Maintenance/Maintenance';
 
-export const CompilerLab = () => {
+export const CompilerLab = (props) => {
   const [filter, setFilter] = useState('');
   let [systemName, SetSystemName] = useState('')
   
+  const navigate = useNavigate();
+  const path = "/home/Maintenance";
 
   const systems = [
     "CSE-CSL-DES-01",
@@ -40,7 +44,11 @@ export const CompilerLab = () => {
   function handleClick(event) {
     SetSystemName(systemName = event.target.textContent);
     console.log(systemName);
+    navigate(path);
+    props.handleClick(systemName);
   }
+
+  
 
   return (
     <>
@@ -68,3 +76,5 @@ export const CompilerLab = () => {
     </>
   );
 };
+
+

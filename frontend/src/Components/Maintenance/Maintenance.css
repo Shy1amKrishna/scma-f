@@ -74,6 +74,13 @@
   font-size: 25px; /* Increase font size on hover */
 }
 
+h4{
+  color: black;
+}
+h4:hover{
+  color: white;
+}
+
 
 
 
