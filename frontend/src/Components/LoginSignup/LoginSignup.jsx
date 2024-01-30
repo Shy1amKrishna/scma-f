@@ -16,19 +16,19 @@ export const LoginSignup = () => {
          <div className="text">Login</div>
          <div className="underline"></div>
        </div>
-       <form action='' method='POST'>
+       <form action='/' autoComplete="on"> {/* Changed autocomplete to autoComplete */}
        <div className="Linputs">
         <div className="Linput">
          <img src={user_icon} alt="" />
-         <input type="text" name='Name'  id='Name' placeholder='Name' autocomplete="given-name" required/>
+         <input type="text" name='username'  id='Name' placeholder='Name' autoComplete="username" required/> {/* Changed name to 'username' and added autoComplete="username" */}
         </div>
         <div className="Linput">
          <img src={password_icon} alt="" />
-         <input type="password" name='Password' id='Password' placeholder='Password' autocomplete="new-password" required/>
+         <input type="password" name='current-password' id='Password' placeholder='Password' autoComplete="current-password" required/> {/* Changed name to 'current-password' and added autoComplete="current-password" */}
         </div>
         </div>
        <div className="submit-container">
-        <button className="submit" onClick={onLoginClick}>Login</button>
+        <button type="submit" className="submit" onClick={onLoginClick}>Login</button>
        </div>
        </form>
     </div>
