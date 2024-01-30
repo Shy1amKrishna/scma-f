@@ -39,15 +39,16 @@
     background: #000000;
 }
 
-.inputs{
+.Linputs{
     margin-top:55px;
     display:flex;
     flex-direction:column;
     gap:25px;
 }
-.input{
+.Linput{
     display:flex;
     align-items:center;
+    justify-content: center;
     margin:auto;
     width: 480px;
     height:80px;
@@ -55,10 +56,10 @@
     border-radius:6px;
     border: 2px solid black;
 }
-.input img{
+.Linput img{
     margin: 0px 30px;
 }
-.input input{
+.Linput input{
     height:50px;
     width:400px;
     background:transparent;
@@ -80,14 +81,17 @@
 }
 .submit-container{
     display:flex;
-    gap:30px;
-    margin:60px auto;
+    align-items:center;
+    justify-content: center;
+    margin:auto;
+    width: 480px;
+    height:80px;
 }
 .submit{
     display:flex;
     justify-content:center;
     align-items:center;
-    width:220px;
+    width:150px;
     height:59px;
     color:#fff;
     background:#4c00b4;
