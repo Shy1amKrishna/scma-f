@@ -16,7 +16,7 @@ function handleSubmit() {
       console.log(complaint); //sending to backend here
       reset("Complaint")
     }catch(e){
-      alert("Sorry something wrong happened.")
+      alert("Sorry something wrong happened.",e);
     }
     
   }else{
