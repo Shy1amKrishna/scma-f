@@ -25,8 +25,14 @@ function App() {
           path="/home/compilerLab"
           element={<CompilerLab handleClick={getData} />}
         />
-        <Route path="/home/softwareLab" element={<SoftwareLab />} />
-        <Route path="/home/programmingLab" element={<ProgrammingLab />} />
+        <Route
+          path="/home/softwareLab"
+          element={<SoftwareLab handleClick={getData} />}
+        />
+        <Route
+          path="/home/programmingLab"
+          element={<ProgrammingLab handleClick={getData} />}
+        />
         <Route
           path="/home/Maintenance"
           element={<Maintenance Mdata={Pdata} />}
