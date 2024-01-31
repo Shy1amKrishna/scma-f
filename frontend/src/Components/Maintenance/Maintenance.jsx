@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Maintenance.css';
 import Computer_icon from '../Assets/computer.png';
+
+
+
 export const Maintenance = (props) => {
   let [complaint,setComplaint] = useState("");
+  const navigate = useNavigate();
 
 function reset() {
   let textarea = document.getElementById("Complaint");
   textarea.value = "";
+  alert("Compalint Submitted")
+  navigate("../Home");
 }
+
+  
+
   
 function handleSubmit() {
   if (complaint.length > 10 && complaint.length < 500) {
