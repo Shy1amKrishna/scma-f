@@ -12,7 +12,7 @@ function reset() {
 function handleSubmit() {
   if (complaint.length > 10 && complaint.length < 500) {
     try{
-      console.log(props.Mdata);//sending to backend here
+      console.log(props.SystemName);//sending to backend here
       console.log(complaint); //sending to backend here
       reset("Complaint")
     }catch(e){
@@ -33,7 +33,7 @@ function handleSubmit() {
           <div className='box'>
             <div className='Cinput'>
             <img src={Computer_icon} alt="" title='Computer icons created by Freepik - Flaticon' about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'/>
-            <h4>{props.Mdata}</h4>
+            <h4>{props.SystemName}</h4>
             </div>
             <div id='ComplaintBox'>
                <label htmlFor='Complaint'>
