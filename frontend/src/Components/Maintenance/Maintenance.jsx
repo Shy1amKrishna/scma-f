@@ -2,38 +2,27 @@ import React, { useState } from 'react';
 import './Maintenance.css';
 import Computer_icon from '../Assets/computer.png';
 export const Maintenance = (props) => {
+  let [complaint,setComplaint] = useState("");
+
+function reset() {
+  let textarea = document.getElementById("Complaint");
+  textarea.value = "";
+}
   
-  let [systemName, SetSystemName] = useState('')
-
-  
-
-  const systems = [
-    "Problem 01",
-    "Problem 02",
-    "Problem 03",
-    "Problem 04",
-    "Problem 05",
-    "Problem 06",
-    "Problem 07",
-    "Problem 08",
-    "Problem 09",
-    "Problem 10",
-    "Problem 11",
-    "Problem 12",
-    "Problem 13",
-    "Problem 14",
-    "Problem 15",
-    "Problem 16",
-    "Problem 17",
-    "Other",
-  ];
-
-  
-
-  function handleClick(event) {
-    SetSystemName(systemName = event.target.textContent);
-    console.log(systemName);
+function handleSubmit() {
+  if (complaint.length > 10 && complaint.length < 500) {
+    try{
+      console.log(props.Mdata);//sending to backend here
+      console.log(complaint); //sending to backend here
+      reset("Complaint")
+    }catch(e){
+      alert("Sorry something wrong happened.")
+    }
+    
+  }else{
+    alert("Keep complaint length between 10 and 500.")
   }
+}
 
   return (
     <>
@@ -46,11 +35,13 @@ export const Maintenance = (props) => {
             <img src={Computer_icon} alt="" title='Computer icons created by Freepik - Flaticon' about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'/>
             <h4>{props.Mdata}</h4>
             </div>
-            <ul id='Clist'>
-              {systems.map((item, index) => (
-                <li onClick={handleClick} key={index}>{item}</li>
-              ))}
-            </ul>
+            <div id='ComplaintBox'>
+               <label htmlFor='Complaint'>
+                Complaint:
+               </label>
+               <textarea autoFocus id='Complaint' type='text' name='Complaint' placeholder='Enter the problem' onChange={(e)=>{setComplaint(e.target.value)}}></textarea>
+               <button type="submit" onClick={handleSubmit}>Submit</button>
+            </div>
           </div>
         </div>
       </div>

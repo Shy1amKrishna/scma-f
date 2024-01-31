@@ -14,7 +14,7 @@ function App() {
   let [Pdata, setData] = useState("");
   const getData = (data) => {
     setData((Pdata = data));
-    console.log("App.js:", Pdata);
+    //console.log("App.js:", Pdata);
   };
   return (
     <div className="App">
