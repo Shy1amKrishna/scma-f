@@ -41,7 +41,7 @@ function handleSubmit() {
           <h1 className="cool-heading">Maintenance</h1>
           <div className="underline"></div>
           <div className='box'>
-            <div className='Cinput'>
+            <div className='Minput'>
             <img src={Computer_icon} alt="" title='Computer icons created by Freepik - Flaticon' about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'/>
             <h4>{props.SystemName}</h4>
             </div>
