@@ -39,6 +39,9 @@
   background-color: #000000cc; /* Change the background color on hover */
   transform: scale(1.05);
 }
+.Minput:hover h4{
+    color: white;
+}
 
   
 .Minput input:hover {
