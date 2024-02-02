@@ -16,7 +16,7 @@ export const LoginSignup = () => {
          <div className="text">Login</div>
          <div className="underline"></div>
        </div>
-       <form action='/' autoComplete="on"> {/* Changed autocomplete to autoComplete */}
+       <form action='/Home' autoComplete="on"> {/* Changed autocomplete to autoComplete */}
        <div className="Linputs">
         <div className="Linput">
          <img src={user_icon} alt="" />
