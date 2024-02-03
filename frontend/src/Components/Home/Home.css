@@ -106,3 +106,51 @@ h1 {
     background-color: #04AA6D;
     color: white;
 }
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .container2 {
+        max-width: 100%; /* Adjusted width for smaller screens */
+    }
+
+    .inputs {
+        margin: 30px auto; /* Adjusted margin for smaller screens */
+        width: 95%; /* Adjusted width for smaller screens */
+    }
+
+    .input {
+        height: 60px; /* Adjusted height for smaller screens */
+    }
+
+    .input h2 {
+        font-size: 1em; /* Adjusted font size for smaller screens */
+    }
+}
+
+/* Media Query for Tablets like iPad Mini */
+@media (max-width: 992px) {
+    .inputs {
+        max-width: 500px; /* Adjusted max-width for tablets */
+    }
+
+    .input {
+        height: 70px; /* Adjusted height for tablets */
+    }
+}
+@media (max-width: 1024px) {
+    .container2 {
+        max-width: 100%; /* Adjusted width for larger tablets */
+    }
+
+    .inputs {
+        max-width: 600px; /* Adjusted max-width for larger tablets */
+    }
+
+    .input {
+        height: 80px; /* Adjusted height for larger tablets */
+    }
+
+    .input h2 {
+        font-size: 1.2em; /* Adjusted font size for larger tablets */
+    }
+}
