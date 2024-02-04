@@ -12,10 +12,7 @@ export const Home = () => {
   return (
     <>
       <div className="topnav">
-  <a className="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+         <a className="active" href="/home/About">About us</a>
       </div>
       <div className='container1'>
         <div className='container2'>
