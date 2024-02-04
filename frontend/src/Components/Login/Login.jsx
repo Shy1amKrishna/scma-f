@@ -5,9 +5,7 @@ import password_icon from '../Assets/password.png'
 
 export const Login = () => {
 
-  function onLoginClick(){
-    console.log("Login clicked")
-  }
+
 
 
   return (
@@ -33,7 +31,7 @@ export const Login = () => {
         </div>
         </div>
        <div className="submit-container">
-        <button type="submit" className="submit" onClick={onLoginClick}>Login</button>
+        <button type="submit" className="submit-btn" >Login</button>
        </div>
        </form>
     </div>

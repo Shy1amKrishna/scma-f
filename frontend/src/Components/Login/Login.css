@@ -4,7 +4,7 @@
     margin:auto;
     margin-top:20px;
     width:600px;
-    background:#0066ff67;
+    background:#00000067;
     /*background:rgb(98, 97, 97);*/
     background-size: cover;
     padding-bottom:30px;
@@ -28,7 +28,7 @@
     transform: scale(1.1); /* Scale the text on hover */
   }
 .text{
-    color: #0015ff;
+    color: rgb(38, 0, 255);
     font-size:48px;
     font-weight: 700;
 }
@@ -101,4 +101,20 @@
 }
 a:hover{
     color: aqua;
+}
+.submit-btn{
+    display: block;
+    width: 80%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: rgb(38, 0, 255);
+    color: rgb(0, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit-btn:hover{
+    background-color: rgb(0, 128, 255);
+    width: 90%;
+    font-size: 25px;
 }
