@@ -118,3 +118,12 @@ a:hover{
     width: 90%;
     font-size: 25px;
 }
+.link{
+    color: blue;
+    font-size: 18px;
+}
+.link:hover{
+    color: rgb(0, 255, 255);
+    font-size: 25px;
+    transition: font-size 0.3s ease;
+}

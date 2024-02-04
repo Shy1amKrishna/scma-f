@@ -4,23 +4,8 @@ const path = require("path");
 const collection = require("./config");
 
 const app = express();
-//convert data into json format
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-//use EJS as view engine
-app.set("view engine", "ejs");
-
-app.get("/", (req, res) => {
-  res.render("login");
-});
-
-app.use(express.static("public"));
-
-app.get("/signup", (req, res) => {
-  res.render("signup");
-});
-
+//getting data from signup page
 app.post("/signup", async (req, res) => {
   const data = {
     name: req.body.username,
@@ -42,6 +27,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+//getting data from login page
 app.post("/login", async (req, res) => {
   try {
     const check = await collection.findOne({ name: req.body.username });
@@ -53,7 +39,7 @@ app.post("/login", async (req, res) => {
       check.password
     );
     if (isPasswordMatch) {
-      res.render("home");
+      res.send("passed");
     } else {
       res.send("Wrong password");
     }
@@ -62,7 +48,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-const port = 5000;
+const port = 3000;
 app.listen(port, () => {
   console.log("Server running on port:", port);
 });

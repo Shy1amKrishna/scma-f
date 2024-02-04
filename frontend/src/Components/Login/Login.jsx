@@ -14,7 +14,7 @@ export const Login = () => {
        <div className="header">
          <div className="text">Login</div>
        </div>
-       <form action='/login' method="post" autoComplete="on"> {/* Changed autocomplete to autoComplete */}
+       <form action="/login" method="post" autoComplete="on"> {/* Changed autocomplete to autoComplete */}
        <div className="Linputs">
         <div className="Linput">
          <img src={user_icon} alt="" />
@@ -27,7 +27,7 @@ export const Login = () => {
          <input type="password" name="password" id="password" placeholder="Enter password" required/>
         </div>
         <div className='dialog'>
-        <p>Don't have an account?<a href="signup">SignUp</a></p>
+        <p>Don't have an account?<span className='link'>SignUp</span></p>
         </div>
         </div>
        <div className="submit-container">
