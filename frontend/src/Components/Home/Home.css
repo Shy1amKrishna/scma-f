@@ -72,13 +72,6 @@ h1 {
     transform: scale(1.1);
 }
 
-.underline {
-    width: 61px;
-    height: 6px;
-    border-radius: 9px;
-    background: #4c00b4;
-}
-
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #333;

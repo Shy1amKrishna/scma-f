@@ -120,10 +120,10 @@ a:hover{
 }
 .link{
     color: blue;
-    font-size: 18px;
+    font-size: 25px;
+    cursor: pointer;
 }
 .link:hover{
     color: rgb(0, 255, 255);
     font-size: 25px;
-    transition: font-size 0.3s ease;
 }
