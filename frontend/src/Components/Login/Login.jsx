@@ -1,19 +1,19 @@
-import React,{ useState} from 'react';
+import React, { useState } from 'react';
 import './Login.css'; 
 import user_icon from '../Assets/person.png';
 import password_icon from '../Assets/password.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
 export const Login = () => {
-
   const navigate = useNavigate();
   const path = "/signup";
 
   function handleClick() {
     navigate(path);
   }
+
+  const [response, setResponse] = useState(null); // Initialize with null
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -27,20 +27,25 @@ export const Login = () => {
         password: password
       });
 
+      // Set the response state
+      setResponse(response.data);
+
       // Assuming the backend returns a token upon successful login
       const token = response.data.token;
 
       // You can store the token in local storage or state for future use
       localStorage.setItem('token', token);
+      console.log(response.data);
 
       // Redirect or perform other actions upon successful login
+      if (response.data === "Login successful") {
+        navigate("/home");
+      }
     } catch (error) {
       // Handle login error
       console.error('Login failed:', error.message);
     }
   };
-
-
 
   return (
     <>
@@ -48,7 +53,7 @@ export const Login = () => {
         <div className="header">
           <div className="text">Login</div>
         </div>
-        <form onSubmit={handleLogin} autoComplete="on"> {/* Changed autocomplete to autoComplete */}
+        <form onSubmit={handleLogin} autoComplete="on">
           <div className="Linputs">
             <div className="Linput">
               <img src={user_icon} alt="User icon" aria-label="User icon" />
@@ -60,12 +65,15 @@ export const Login = () => {
               <label htmlFor="password" className='hidden'>Password:</label>
               <input type="password" name="password" id="password" placeholder="Enter password" required autoComplete="off" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
-            <div className='dialog'>
+            </div>
+            <div className='dialog1'>
+              <p className="response">{response}</p> {/* Display response */}
+            </div>
+            <div className='dialog2'>
               <p>Don't have an account?<span className='link' onClick={handleClick}>SignUp</span></p>
             </div>
-          </div>
           <div className="submit-container">
-            <button type="submit" className="submit-btn" >Login</button>
+            <button type="submit" className="submit-btn">Login</button>
           </div>
         </form>
       </div>
