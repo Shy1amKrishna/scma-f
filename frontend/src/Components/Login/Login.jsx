@@ -65,12 +65,12 @@ export const Login = () => {
               <label htmlFor="password" className='hidden'>Password:</label>
               <input type="password" name="password" id="password" placeholder="Enter password" required autoComplete="off" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
-            </div>
             <div className='dialog1'>
               <p className="response">{response}</p> {/* Display response */}
             </div>
             <div className='dialog2'>
               <p>Don't have an account?<span className='link' onClick={handleClick}>SignUp</span></p>
+            </div>
             </div>
           <div className="submit-container">
             <button type="submit" className="submit-btn">Login</button>
