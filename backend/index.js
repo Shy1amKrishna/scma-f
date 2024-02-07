@@ -13,7 +13,7 @@ app.post("/login", async (req, res) => {
     const { username, password } = req.body;
 
     // Find user by username
-    const user = await collection.findOne({ name: username });
+    const user = await collection.UserModel.findOne({ name: username });
 
     if (!user) {
       return res.send("User not found");
@@ -29,7 +29,7 @@ app.post("/login", async (req, res) => {
     }
   } catch (error) {
     console.error("Login error:", error);
-    return res.status(500).send("Internal server error");
+    return res.send("Internal server error");
   }
 });
 
@@ -38,7 +38,7 @@ app.post("/signup", async (req, res) => {
 
   try {
     // Check if user already exists
-    const existingUser = await collection.findOne({ name: username });
+    const existingUser = await collection.UserModel.findOne({ name: username });
     if (existingUser) {
       return res.send("User already exists. Please try another username.");
     }
@@ -53,12 +53,38 @@ app.post("/signup", async (req, res) => {
       password: hashedPassword,
     };
 
-    const result = await collection.insertMany(newUser);
+    const result = await collection.UserModel.insertMany(newUser);
     console.log("User created:", result);
 
     return res.send("User created successfully.");
   } catch (error) {
     console.error("Signup error:", error);
+    return res.send("Internal server error");
+  }
+});
+
+app.post("/complaints", async (req, res) => {
+  const { systemName, complaint } = req.body;
+  try {
+    console.log("Complaint received from frontend:", req.body);
+
+    // Here you can process the complaint, save it to a database, send an email notification, etc.
+    console.log(`Received complaint for system ${systemName}: ${complaint}`);
+
+    // Create new user
+    const newComplaint = {
+      //name: username,
+      systemName: systemName,
+      complaint: complaint,
+    };
+
+    const result = await collection.ComplaintModel.insertMany(newComplaint);
+    console.log("User created:", result);
+
+    // Send a response indicating success
+    res.send("Complaint recorded successfully");
+  } catch (error) {
+    console.error("Complaint handling error:", error);
     return res.send("Internal server error");
   }
 });

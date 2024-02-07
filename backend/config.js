@@ -2,18 +2,16 @@ const mongoose = require("mongoose");
 
 const connect = mongoose.connect("mongodb://localhost:27017/login");
 
-//check connection
+// Check connection
 connect
   .then(() => {
     console.log("Database successfully connected.");
   })
-
   .catch(() => {
     console.log("Database cannot be connected.");
   });
 
-//create a schema
-
+// Create schemas
 const loginSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -25,5 +23,23 @@ const loginSchema = new mongoose.Schema({
   },
 });
 
-const collection = new mongoose.model("users", loginSchema);
-module.exports = collection;
+const complaintSchema = new mongoose.Schema({
+  systemName: {
+    type: String,
+    required: true,
+  },
+  complaint: {
+    type: String,
+    required: true,
+  },
+});
+
+// Create models
+const UserModel = mongoose.model("users", loginSchema);
+const ComplaintModel = mongoose.model("complaints", complaintSchema);
+
+// Export models
+module.exports = {
+  UserModel: UserModel,
+  ComplaintModel: ComplaintModel,
+};

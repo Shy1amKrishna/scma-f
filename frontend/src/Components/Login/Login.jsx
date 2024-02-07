@@ -8,6 +8,7 @@ import axios from 'axios';
 export const Login = () => {
   const navigate = useNavigate();
   const path = "/signup";
+  const backendAddress = 'http://localhost:5000/login';
 
   function handleClick() {
     navigate(path);
@@ -22,7 +23,7 @@ export const Login = () => {
     e.preventDefault(); // Prevent the default form submission behavior
 
     try {
-      const response = await axios.post('http://localhost:5000/login', {
+      const response = await axios.post(backendAddress, {
         username: username,
         password: password
       });
@@ -43,6 +44,7 @@ export const Login = () => {
       }
     } catch (error) {
       // Handle login error
+      alert("Sorry something wrong happened.\n" + error)
       console.error('Login failed:', error.message);
     }
   };

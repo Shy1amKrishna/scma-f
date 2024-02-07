@@ -16,12 +16,13 @@ export const Signup = () => {
   const [response, setResponse] = useState(null); // Initialize with null
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const backendAddress = 'http://localhost:5000/signup';
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/signup', {
+      const response = await axios.post(backendAddress, {
         username: username,
         password: password
       });
