@@ -19,6 +19,11 @@ function App() {
   };
   return (
     <div className="App">
+      <div className="topnav">
+        <a className="active" href="/home/About">
+          About us
+        </a>
+      </div>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
