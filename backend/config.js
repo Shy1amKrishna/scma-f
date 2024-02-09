@@ -34,12 +34,25 @@ const complaintSchema = new mongoose.Schema({
   },
 });
 
+const systemSchema = new mongoose.Schema({
+  index: {
+    type: Number, // Changed from Int to Number
+    required: [true, "Index is required"], // Custom error message for required field
+  },
+  name: {
+    type: String,
+    required: [true, "Name is required"], // Custom error message for required field
+  },
+});
+
 // Create models
 const UserModel = mongoose.model("users", loginSchema);
 const ComplaintModel = mongoose.model("complaints", complaintSchema);
+const SystemModel = mongoose.model("systems", systemSchema);
 
 // Export models
 module.exports = {
   UserModel: UserModel,
   ComplaintModel: ComplaintModel,
+  SystemModel: SystemModel,
 };

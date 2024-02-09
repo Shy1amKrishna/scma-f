@@ -20,9 +20,10 @@ function App() {
   return (
     <div className="App">
       <div className="topnav">
-        <a className="active" href="/home/About">
+        <a className="active" href="/About">
           About us
         </a>
+        <div className="userData">user name</div>
       </div>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -44,7 +45,7 @@ function App() {
           path="/home/Maintenance"
           element={<Maintenance SystemName={Name} />}
         />
-        <Route path="/home/About" element={<About />} />
+        <Route path="/About" element={<About />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

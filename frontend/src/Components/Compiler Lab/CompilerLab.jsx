@@ -6,12 +6,15 @@ import Computer_icon from '../Assets/computer.png';
 
 export const CompilerLab = (props) => {
   const [filter, setFilter] = useState('');
-  let [systemName, SetSystemName] = useState('')
+  let [systemName, SetSystemName] = useState('');
+  const [systems, setSystems] = useState([]);
+
+  
   
   const navigate = useNavigate();
   const path = "/home/Maintenance";
 
-  const systems = [
+  //const systems = [
     "CSE-CSL-DES-01",
     "CSE-CSL-DES-02",
     "CSE-CSL-DES-03",
@@ -30,7 +33,7 @@ export const CompilerLab = (props) => {
     "CSE-CSL-DES-16",
     "CSE-CSL-DES-17",
     "CSE-CSL-DES-18",
-  ];
+  //];
 
   function handleInputChange(event) {
     setFilter(event.target.value.toUpperCase());
@@ -47,7 +50,13 @@ export const CompilerLab = (props) => {
     navigate(path);
     props.handleClick(systemName);
   }
+  
 
+  useEffect(() => {
+    axios.get('http://localhost:5000/systems')
+      .then(response => setSystems(response.data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
   
 
   return (

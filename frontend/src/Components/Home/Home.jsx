@@ -14,7 +14,7 @@ export const Home = () => {
       
       <div className='container1'>
         <div className='container2'>
-        <h1 className="cool-heading">SCMA</h1>
+        <h1 className="cool-heading">LABS</h1>
       <div className='inputs'>
         <div className='input' onClick={() => handleDivClick('/home/compilerLab')}><h2>Compiler Lab</h2></div>
         <div className='input' onClick={() => handleDivClick('/home/programmingLab')}><h2>Programming Lab</h2></div>

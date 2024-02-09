@@ -89,6 +89,17 @@ app.post("/complaints", async (req, res) => {
   }
 });
 
+//for getting list of systems
+app.get("/systems", async (req, res) => {
+  try {
+    const systems = await collection.SystemModel.find();
+    res.json(systems);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 const port = 5000;
 app.listen(port, () => {
   console.log("Server running on port:", port);
