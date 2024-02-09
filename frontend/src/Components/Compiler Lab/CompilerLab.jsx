@@ -1,88 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './CompilerLab.css';
-import Computer_icon from '../Assets/computer.png';
-//import {Maintenance} from '../Maintenance/Maintenance';
+import ComputerIcon from '../Assets/computer.png'; // Renamed variable to follow convention
 
 export const CompilerLab = (props) => {
   const [filter, setFilter] = useState('');
-  let [systemName, SetSystemName] = useState('');
   const [systems, setSystems] = useState([]);
-
-  
-  
   const navigate = useNavigate();
   const path = "/home/Maintenance";
 
-  //const systems = [
-    "CSE-CSL-DES-01",
-    "CSE-CSL-DES-02",
-    "CSE-CSL-DES-03",
-    "CSE-CSL-DES-04",
-    "CSE-CSL-DES-05",
-    "CSE-CSL-DES-06",
-    "CSE-CSL-DES-07",
-    "CSE-CSL-DES-08",
-    "CSE-CSL-DES-09",
-    "CSE-CSL-DES-10",
-    "CSE-CSL-DES-11",
-    "CSE-CSL-DES-12",
-    "CSE-CSL-DES-13",
-    "CSE-CSL-DES-14",
-    "CSE-CSL-DES-15",
-    "CSE-CSL-DES-16",
-    "CSE-CSL-DES-17",
-    "CSE-CSL-DES-18",
-  //];
-
-  function handleInputChange(event) {
+  // Function to handle input change for filtering
+  const handleInputChange = (event) => {
     setFilter(event.target.value.toUpperCase());
   }
 
-  function filterList(item) {
-    const txtValue = item.toUpperCase();
-    return txtValue.indexOf(filter) > -1;
-  }
-
-  function handleClick(event) {
-    SetSystemName(systemName = event.target.textContent);
-    console.log(systemName);
+  // Function to handle click event on system name
+  const handleClick = (event) => {
+    const systemName = event.target.textContent;
     navigate(path);
     props.handleClick(systemName);
   }
   
-
   useEffect(() => {
-    axios.get('http://localhost:5000/systems')
-      .then(response => setSystems(response.data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
-  
+    // Fetch systems from MongoDB using Axios
+    const fetchSystems = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/systems');
+        setSystems(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchSystems();
+  }, []); // Empty dependency array ensures useEffect runs only once on component mount
+
+  // Function to filter list based on input
+  const filterList = (item) => {
+    const txtValue = item.toUpperCase();
+    return txtValue.includes(filter);
+  }
 
   return (
-    <>
-      <div className='container1'>
-        <div className='container2'>
-          <h1 className="cool-heading">Compiler Lab</h1>
-          <div className='box'>
-            <div className='Cinput'>
-            <img src={Computer_icon} alt="" title='Computer icons created by Freepik - Flaticon' about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'/>
+    <div className='container1'>
+      <div className='container2'>
+        <h1 className="cool-heading">Compiler Lab</h1>
+        <div className='box'>
+          <div className='Cinput'>
+            <img src={ComputerIcon} alt="Computer Icon" title='Computer icons created by Freepik - Flaticon' />
             <input
               type='text'
-              placeholder='System name?'
+              placeholder='System number?'
               onChange={handleInputChange}
             />
-            </div>
-            <ul id='Clist'>
-              {systems.map((item, index) => (
-                <li onClick={handleClick} key={index} style={{ display: filterList(item) ? '' : 'none' }}>{item}</li>
-              ))}
-            </ul>
           </div>
+          <ul id='Clist'>
+            {systems.map((item, index) => (
+              <li onClick={handleClick} key={index} style={{ display: filterList(item.name) ? '' : 'none' }}>{item.name}</li>
+            ))}
+          </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
-
-

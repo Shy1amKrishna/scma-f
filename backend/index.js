@@ -1,106 +1,100 @@
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
-const collection = require("./config");
+const collection = require("./config"); // Importing database models and configuration
 
-const app = express();
-app.use(express.json());
-app.use(cors());
+const app = express(); // Creating an Express application
+app.use(express.json()); // Middleware to parse JSON requests
+app.use(cors()); // Middleware to enable CORS (Cross-Origin Resource Sharing)
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Internal Server Error");
+});
+
+// Login endpoint
 app.post("/login", async (req, res) => {
   try {
-    console.log("Data received from frontend:", req.body);
     const { username, password } = req.body;
-
-    // Find user by username
     const user = await collection.UserModel.findOne({ name: username });
 
     if (!user) {
-      return res.send("User not found");
+      return res.status(404).send("User not found"); // Return error if user not found
     }
 
-    // Compare passwords
     const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (isPasswordMatch) {
-      return res.send("Login successful");
+      return res.send("Login successful"); // Return success message if password matches
     } else {
-      return res.send("Incorrect password");
+      return res.status(401).send("Incorrect password"); // Return error if password is incorrect
     }
   } catch (error) {
     console.error("Login error:", error);
-    return res.send("Internal server error");
+    return res.status(500).send("Internal server error"); // Return error for any server-side error
   }
 });
 
+// Signup endpoint
 app.post("/signup", async (req, res) => {
-  const { username, password } = req.body;
-
   try {
-    // Check if user already exists
+    const { username, password } = req.body;
     const existingUser = await collection.UserModel.findOne({ name: username });
+
     if (existingUser) {
-      return res.send("User already exists. Please try another username.");
+      return res
+        .status(400)
+        .send("User already exists. Please try another username."); // Return error if user already exists
     }
 
-    // Hash the password
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    // Create new user
     const newUser = {
       name: username,
       password: hashedPassword,
     };
 
-    const result = await collection.UserModel.insertMany(newUser);
-    console.log("User created:", result);
-
+    await collection.UserModel.create(newUser); // Create new user
     return res.send("User created successfully.");
   } catch (error) {
     console.error("Signup error:", error);
-    return res.send("Internal server error");
+    return res.status(500).send("Internal server error"); // Return error for any server-side error
   }
 });
 
+// Complaints endpoint
 app.post("/complaints", async (req, res) => {
-  const { systemName, complaint } = req.body;
   try {
+    const { systemName, complaint } = req.body;
     console.log("Complaint received from frontend:", req.body);
 
-    // Here you can process the complaint, save it to a database, send an email notification, etc.
-    console.log(`Received complaint for system ${systemName}: ${complaint}`);
-
-    // Create new user
     const newComplaint = {
-      //name: username,
       systemName: systemName,
       complaint: complaint,
     };
 
-    const result = await collection.ComplaintModel.insertMany(newComplaint);
-    console.log("User created:", result);
-
-    // Send a response indicating success
-    res.send("Complaint recorded successfully");
+    await collection.ComplaintModel.create(newComplaint); // Create new complaint
+    return res.send("Complaint recorded successfully");
   } catch (error) {
     console.error("Complaint handling error:", error);
-    return res.send("Internal server error");
+    return res.status(500).send("Internal server error"); // Return error for any server-side error
   }
 });
 
-//for getting list of systems
+// Get list of systems endpoint
 app.get("/systems", async (req, res) => {
   try {
-    const systems = await collection.SystemModel.find();
-    res.json(systems);
+    const systems = await collection.SystemModel.find(); // Fetch list of systems from database
+    return res.json(systems); // Return list of systems as JSON response
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error
   }
 });
 
-const port = 5000;
+const port = process.env.PORT || 5000; // Set port for server
 app.listen(port, () => {
-  console.log("Server running on port:", port);
+  console.log("Server running on port:", port); // Start server and log port number
 });
