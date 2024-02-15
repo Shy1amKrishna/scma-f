@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import { Maintenance } from "./Components/Maintenance/Maintenance";
 import { About } from "./Components/About/About";
 import { Signup } from "./Components/Signup/Signup";
+import { Navbar } from "./Components/Navbar/Navbar";
 
 function App() {
   let [Name, setName] = useState("");
@@ -17,16 +18,16 @@ function App() {
     setName((Name = data));
     //console.log("App.js:", Name);
   };
+  let [userName, setUserName] = useState("");
+  const getUser = (username) => {
+    setUserName((userName = username));
+  };
+
   return (
     <div className="App">
-      <div className="topnav">
-        <a className="active" href="/About">
-          About us
-        </a>
-        <div className="userData">user name</div>
-      </div>
+      <Navbar isLogged={true} userName={userName} />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login getUser={getUser} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<Home />} />
         <Route

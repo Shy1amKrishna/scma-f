@@ -5,7 +5,7 @@ import password_icon from '../Assets/password.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-export const Login = () => {
+export const Login = (props) => {
   const navigate = useNavigate();
   const path = "/signup";
   const backendAddress = 'http://localhost:5000/login';
@@ -21,7 +21,7 @@ export const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-
+    props.getUser(username);
     try {
       const response = await axios.post(backendAddress, {
         username: username,
