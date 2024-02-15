@@ -21,7 +21,7 @@ export const Login = (props) => {
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    props.getUser(username);
+    
     try {
       const response = await axios.post(backendAddress, {
         username: username,
@@ -41,6 +41,8 @@ export const Login = (props) => {
       // Redirect or perform other actions upon successful login
       if (response.data === "Login successful") {
         navigate("/home");
+        props.getUser(username);
+        props.setLogged(true);
       }
     } catch (error) {
       // Handle login error

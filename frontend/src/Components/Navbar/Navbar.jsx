@@ -3,7 +3,7 @@ import "./Navbar.css";
 
 export const Navbar = (props) => {
     const userName = props.userName;
-    const isLoggedIn = true;
+    const isLoggedIn = props.isLogged;
   return (
     <>
       <div className="topnav">

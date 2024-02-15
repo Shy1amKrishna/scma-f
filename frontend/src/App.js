@@ -22,12 +22,19 @@ function App() {
   const getUser = (username) => {
     setUserName((userName = username));
   };
+  let [logged, isLogged] = useState("");
+  const setLogged = (data) => {
+    isLogged((logged = data));
+  };
 
   return (
     <div className="App">
-      <Navbar isLogged={true} userName={userName} />
+      <Navbar isLogged={logged} userName={userName} />
       <Routes>
-        <Route path="/" element={<Login getUser={getUser} />} />
+        <Route
+          path="/"
+          element={<Login getUser={getUser} setLogged={setLogged} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<Home />} />
         <Route
