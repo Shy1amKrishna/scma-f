@@ -3,6 +3,8 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const collection = require("./config"); // Importing database models and configuration
 
+let userNavbar = ""; //variable to store username for navbar
+
 const app = express(); // Creating an Express application
 app.use(express.json()); // Middleware to parse JSON requests
 app.use(cors()); // Middleware to enable CORS (Cross-Origin Resource Sharing)
@@ -26,6 +28,8 @@ app.post("/login", async (req, res) => {
     const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (isPasswordMatch) {
+      userNavbar = username; //setting username to show on navbar
+      // console.log(userNavbar);
       return res.send("Login successful"); // Return success message if password matches
     } else {
       return res.status(401).send("Incorrect password"); // Return error if password is incorrect
@@ -88,6 +92,17 @@ app.get("/systems", async (req, res) => {
   try {
     const systems = await collection.SystemModel.find(); // Fetch list of systems from database
     return res.json(systems); // Return list of systems as JSON response
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error
+  }
+});
+
+// setting or giving username to navbar
+app.get("/userNavbar", async (req, res) => {
+  try {
+    console.log("Worked");
+    return res.send(userNavbar); // Return username to navbar
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error

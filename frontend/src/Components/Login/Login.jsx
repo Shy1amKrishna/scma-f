@@ -37,12 +37,12 @@ export const Login = (props) => {
       // You can store the token in local storage or state for future use
       localStorage.setItem('token', token);
       console.log(response.data);
+      //console.log(response.data.token);
 
       // Redirect or perform other actions upon successful login
       if (response.data === "Login successful") {
         navigate("/home");
-        props.getUser(username);
-        props.setLogged(true);
+        props.setLogged(username);
       }
     } catch (error) {
       // Handle login error

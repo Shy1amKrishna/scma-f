@@ -13,28 +13,24 @@ import { Signup } from "./Components/Signup/Signup";
 import { Navbar } from "./Components/Navbar/Navbar";
 
 function App() {
-  let [Name, setName] = useState("");
+  let [Name, setName] = useState(""); //system name
+  let [logged, isLogged] = useState(""); //login confirmation
+
+  //for getting system name from different labs
   const getSystem = (data) => {
     setName((Name = data));
-    //console.log("App.js:", Name);
   };
-  let [userName, setUserName] = useState("");
-  const getUser = (username) => {
-    setUserName((userName = username));
-  };
-  let [logged, isLogged] = useState("");
+
+  // for getting confirmation from login
   const setLogged = (data) => {
-    isLogged((logged = data));
+    isLogged(data);
   };
 
   return (
     <div className="App">
-      <Navbar isLogged={logged} userName={userName} />
+      <Navbar isLogged={true} key={logged} />
       <Routes>
-        <Route
-          path="/"
-          element={<Login getUser={getUser} setLogged={setLogged} />}
-        />
+        <Route path="/" element={<Login setLogged={setLogged} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<Home />} />
         <Route
