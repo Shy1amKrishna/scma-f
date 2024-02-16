@@ -1,0 +1,123 @@
+h1 {
+    font-size: 3em; /* Adjusted font size using relative unit */
+    font-weight: 700;
+}
+
+.container1 {
+    width: 100%;
+    height: 100%;
+    background-color: #00000083;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    max-width: 80vh; /* Adjusted width to be more responsive */
+    background: url("../Assets/background.jpg") no-repeat fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+.inputs {
+    margin: 55px auto; /* Adjusted margin to be more responsive */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 90%; /* Adjusted width to be more responsive */
+    max-width: 400px; /* Added max-width for responsiveness */
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 100%; /* Adjusted width to be more responsive */
+    background: rgba(255, 255, 255, 0.521);
+    border: 2px solid black;
+    border-radius: 10px;
+    color: #000000;
+    transition: background-color 0.3s ease;
+}
+
+.input:hover {
+    background-color: #000000cc;
+    transform: scale(1.1);
+}
+
+.input h2 {
+    font-size: 1.25em; /* Adjusted font size using relative unit */
+    transition: font-size 0.3s ease;
+}
+
+.input:hover h2 {
+    color: white;
+    font-size: 1.5em; /* Adjusted font size using relative unit */
+}
+
+.cool-heading {
+    color: #000000;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cool-heading:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .container2 {
+        max-width: 100%; /* Adjusted width for smaller screens */
+    }
+
+    .inputs {
+        margin: 30px auto; /* Adjusted margin for smaller screens */
+        width: 95%; /* Adjusted width for smaller screens */
+    }
+
+    .input {
+        height: 60px; /* Adjusted height for smaller screens */
+    }
+
+    .input h2 {
+        font-size: 1em; /* Adjusted font size for smaller screens */
+    }
+}
+
+/* Media Query for Tablets like iPad Mini */
+@media (max-width: 992px) {
+    .inputs {
+        max-width: 500px; /* Adjusted max-width for tablets */
+    }
+
+    .input {
+        height: 70px; /* Adjusted height for tablets */
+    }
+}
+@media (max-width: 1024px) {
+    .container2 {
+        max-width: 100%; /* Adjusted width for larger tablets */
+    }
+
+    .inputs {
+        max-width: 600px; /* Adjusted max-width for larger tablets */
+    }
+
+    .input {
+        height: 80px; /* Adjusted height for larger tablets */
+    }
+
+    .input h2 {
+        font-size: 1.2em; /* Adjusted font size for larger tablets */
+    }
+}

@@ -11,6 +11,7 @@ import { Maintenance } from "./Components/Maintenance/Maintenance";
 import { About } from "./Components/About/About";
 import { Signup } from "./Components/Signup/Signup";
 import { Navbar } from "./Components/Navbar/Navbar";
+import { Modes } from "./Components/Modes/Modes";
 
 function App() {
   let [Name, setName] = useState(""); //system name
@@ -30,7 +31,8 @@ function App() {
     <div className="App">
       <Navbar isLogged={true} key={logged} />
       <Routes>
-        <Route path="/" element={<Login setLogged={setLogged} />} />
+        <Route path="/" element={<Modes />} />
+        <Route path="/login" element={<Login setLogged={setLogged} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<Home />} />
         <Route
