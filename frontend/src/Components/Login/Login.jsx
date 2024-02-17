@@ -42,7 +42,8 @@ export const Login = (props) => {
       // Redirect or perform other actions upon successful login
       if (response.data === "Login successful") {
         navigate("/home");
-        props.setLogged(username);
+        props.setUser(username);
+        props.setLogged(true);
       }
     } catch (error) {
       // Handle login error

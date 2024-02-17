@@ -15,6 +15,7 @@ import { Modes } from "./Components/Modes/Modes";
 
 function App() {
   let [Name, setName] = useState(""); //system name
+  let [userName, setUserName] = useState(""); //username
   let [logged, isLogged] = useState(""); //login confirmation
 
   //for getting system name from different labs
@@ -24,15 +25,22 @@ function App() {
 
   // for getting confirmation from login
   const setLogged = (data) => {
-    isLogged(data);
+    isLogged((logged = data));
+  };
+
+  const setUser = (data) => {
+    setUserName((userName = data));
   };
 
   return (
     <div className="App">
-      <Navbar isLogged={true} key={logged} />
+      <Navbar isLogged={logged} userName={userName} />
       <Routes>
         <Route path="/" element={<Modes />} />
-        <Route path="/login" element={<Login setLogged={setLogged} />} />
+        <Route
+          path="/login"
+          element={<Login setLogged={setLogged} setUser={setUser} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<Home />} />
         <Route

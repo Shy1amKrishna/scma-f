@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const collection = require("./config"); // Importing database models and configuration
 
 let userNavbar = ""; //variable to store username for navbar
+let userLogged = false; //variable to confirm loggin for navbar
 
 const app = express(); // Creating an Express application
 app.use(express.json()); // Middleware to parse JSON requests
@@ -29,6 +30,7 @@ app.post("/login", async (req, res) => {
 
     if (isPasswordMatch) {
       userNavbar = username; //setting username to show on navbar
+      userLogged = true; //setting login confirmation for navbar
       // console.log(userNavbar);
       return res.send("Login successful"); // Return success message if password matches
     } else {
@@ -102,7 +104,11 @@ app.get("/systems", async (req, res) => {
 app.get("/userNavbar", async (req, res) => {
   try {
     console.log("Worked");
-    return res.send(userNavbar); // Return username to navbar
+    const responseData = {
+      userNavbar: userNavbar,
+      userLogged: userLogged,
+    };
+    return res.send(responseData); // Return object containing username and login state to navbar
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error
