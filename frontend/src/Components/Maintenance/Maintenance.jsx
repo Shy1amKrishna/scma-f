@@ -11,10 +11,18 @@ export const Maintenance = (props) => {
   const backendAddress = 'http://localhost:5000/complaints';
   //console.log("SystemName:",systemName);
 
+  
   useEffect(() => {
-    // Update SystemName state when props.SystemName changes
-    setSystemName(props.SystemName);
-  }, [props.SystemName]);
+    // Fetch userSystem when props change
+    axios.get('http://localhost:5000/getSystem')
+      .then(response => {
+        setSystemName(response.data);
+        //console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, [props]); // Add props as a dependency so useEffect runs when props change
 
   
 
