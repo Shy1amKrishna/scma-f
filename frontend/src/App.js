@@ -26,15 +26,17 @@ function App() {
   // for getting confirmation from login
   const setLogged = (data) => {
     isLogged((logged = data));
+    console.log("logged (app.js) =", logged);
   };
 
   const setUser = (data) => {
     setUserName((userName = data));
+    console.log("userName =", userName);
   };
 
   return (
     <div className="App">
-      <Navbar isLogged={logged} userName={userName} />
+      <Navbar isLogged={logged} setLogged={setLogged} userName={userName} />
       <Routes>
         <Route path="/" element={<Modes />} />
         <Route
@@ -42,7 +44,7 @@ function App() {
           element={<Login setLogged={setLogged} setUser={setUser} />}
         />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home isLogged={logged} />} />
         <Route
           path="/home/compilerLab"
           element={<CompilerLab handleClick={getSystem} />}

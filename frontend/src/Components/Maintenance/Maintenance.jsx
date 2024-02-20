@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Maintenance.css';
 import Computer_icon from '../Assets/computer.png';
@@ -11,19 +11,9 @@ export const Maintenance = (props) => {
   const backendAddress = 'http://localhost:5000/complaints';
   //console.log("SystemName:",systemName);
 
-  
-  useEffect(() => {
-    // Fetch userSystem when props change
-    axios.get('http://localhost:5000/getSystem')
-      .then(response => {
-        setSystemName(response.data);
-        //console.log(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, [props]); // Add props as a dependency so useEffect runs when props change
-
+  useEffect(()=>{
+    setSystemName(props.SystemName);
+  },[props]);
   
 
   function reset() {

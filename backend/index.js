@@ -3,10 +3,6 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const collection = require("./config"); // Importing database models and configuration
 
-let userNavbar = ""; //variable to store username for navbar
-let userLogged = false; //variable to confirm loggin for navbar
-let userSystem = ""; //variable to store selected system name in maintenance.
-
 const app = express(); // Creating an Express application
 app.use(express.json()); // Middleware to parse JSON requests
 app.use(cors()); // Middleware to enable CORS (Cross-Origin Resource Sharing)
@@ -30,9 +26,6 @@ app.post("/login", async (req, res) => {
     const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (isPasswordMatch) {
-      userNavbar = username; //setting username to show on navbar
-      userLogged = true; //setting login confirmation for navbar
-      // console.log(userNavbar);
       return res.send("Login successful"); // Return success message if password matches
     } else {
       return res.status(401).send("Incorrect password"); // Return error if password is incorrect
@@ -50,9 +43,7 @@ app.post("/signup", async (req, res) => {
     const existingUser = await collection.UserModel.findOne({ name: username });
 
     if (existingUser) {
-      return res
-        .status(400)
-        .send("User already exists. Please try another username."); // Return error if user already exists
+      return res.send("User already exists. Please try another username."); // Return error if user already exists
     }
 
     const saltRounds = 10;
@@ -95,45 +86,6 @@ app.get("/systems", async (req, res) => {
   try {
     const systems = await collection.SystemModel.find(); // Fetch list of systems from database
     return res.json(systems); // Return list of systems as JSON response
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error
-  }
-});
-
-// setting or giving username to navbar
-app.get("/userNavbar", async (req, res) => {
-  try {
-    //console.log("Worked");
-    const responseData = {
-      userNavbar: userNavbar,
-      userLogged: userLogged,
-    };
-    return res.send(responseData); // Return object containing username and login state to navbar
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error
-  }
-});
-
-//storing systemName in backend
-// Complaints endpoint
-app.post("/systemName", async (req, res) => {
-  try {
-    //const { systemName } = req.body;
-    //console.log("systemName received from frontend:", req.body.systemName);
-    userSystem = req.body.systemName;
-  } catch (error) {
-    console.error("Complaint handling error:", error);
-    return res.status(500).send("Internal server error"); // Return error for any server-side error
-  }
-});
-
-// giving systemName to maintenance
-app.get("/getSystem", async (req, res) => {
-  try {
-    //console.log("Worked");
-    return res.send(userSystem); // Return userSyatem to maintenance
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error

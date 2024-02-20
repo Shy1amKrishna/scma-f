@@ -1,30 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './Navbar.css';
+import React, { useState, useEffect } from "react";
+import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = (props) => {
-  const backendAddress = 'http://localhost:5000/userNavbar';
-  const [isLoggedIn, setLoggedIn] = useState(props.isLogged);
-  const [userName, setUserName] = useState(props.userName);
+  const [isLoggedIn, setLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === true ? true : props.isLogged //for getting logstate from localstorage
+  );
+  const [userName, setUserName] = useState(
+    localStorage.getItem("userName") || props.userName //for getting username from localstorage
+  );
 
   useEffect(() => {
-    // Fetch user data when props change
-    axios.get(backendAddress)
-      .then(response => {
-        setUserName(response.data.userNavbar);
-        setLoggedIn(response.data.userLogged);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, [props]); // Add props as a dependency so useEffect runs when props change
+    setLoggedIn(
+      localStorage.getItem("isLoggedIn") === "true" ? true : props.isLogged
+    );
+    setUserName(localStorage.getItem("userName") || props.userName);
+  }, [props]);
+
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", isLoggedIn);
+    //if (userName !== "") {
+    localStorage.setItem("userName", userName);
+    //}
+    console.log("logged = " + isLoggedIn + " username = " + userName);
+  }, [isLoggedIn, userName]);
+
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
+  const LogOut = () => {
+    localStorage.setItem("isLoggedIn", "false");
+    localStorage.setItem("userName", "");
+    setLoggedIn(false);
+    props.setLogged(false);
+    setUserName("");
+    handleNavigation("/");
+    console.log("logged = " + isLoggedIn + " username = " + userName);
+  };
 
   return (
     <div className="topnav">
       <a className="active" href="/About">
         About us
       </a>
-      {isLoggedIn ? <div className="userData">{userName}</div> : null}
+      {isLoggedIn ? (
+        <div className="userData" onClick={LogOut}>
+          {userName}
+        </div>
+      ) : null}
     </div>
   );
 };

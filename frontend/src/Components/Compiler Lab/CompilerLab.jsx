@@ -20,15 +20,6 @@ export const CompilerLab = (props) => {
     const systemName = event.target.textContent;
     navigate(path);
     props.handleClick(systemName);
-    try{
-      await axios.post('http://localhost:5000/systemName', {
-        systemName: systemName
-      });
-    } catch (error) {
-      // Handle systemName send error
-      alert("Sorry something wrong happened.\n" + error)
-      console.error('send systemName failed:', error.message);
-    }
   }
   
   useEffect(() => {
