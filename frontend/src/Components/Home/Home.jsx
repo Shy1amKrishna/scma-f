@@ -1,15 +1,19 @@
 import React from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-export const Home = (props) => {
+import { Navbar } from "../Navbar/Navbar";
+export const Home = () => {
   const navigate = useNavigate();
 
   const handleDivClick = (path) => {
     navigate(path);
   };
 
-  return props.isLogged ? (
+  let isLogged = true;
+
+  return isLogged ? (
     <>
+      <Navbar />
       <div className="container1">
         <div className="container2">
           <h1 className="cool-heading">LABS</h1>

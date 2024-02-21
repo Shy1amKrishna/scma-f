@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './ProgrammingLab.css';
-import Computer_icon from '../Assets/computer.png';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./ProgrammingLab.css";
+import Computer_icon from "../Assets/computer.png";
+import { Navbar } from "../Navbar/Navbar";
 //import {Maintenance} from '../Maintenance/Maintenance';
 
 export const ProgrammingLab = (props) => {
-  const [filter, setFilter] = useState('');
-  let [systemName, SetSystemName] = useState('')
-  
+  const [filter, setFilter] = useState("");
+  let [systemName, SetSystemName] = useState("");
+
   const navigate = useNavigate();
   const path = "/home/Maintenance";
 
@@ -42,31 +43,41 @@ export const ProgrammingLab = (props) => {
   }
 
   function handleClick(event) {
-    SetSystemName(systemName = event.target.textContent);
+    SetSystemName((systemName = event.target.textContent));
     console.log(systemName);
     navigate(path);
     props.handleClick(systemName);
   }
 
-  
-
   return (
     <>
-      <div className='container1'>
-        <div className='container2'>
+      <Navbar />
+      <div className="container1">
+        <div className="container2">
           <h1 className="cool-heading">Programming Lab</h1>
-          <div className='box'>
-            <div className='Cinput'>
-            <img src={Computer_icon} alt="" title='Computer icons created by Freepik - Flaticon' about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'/>
-            <input
-              type='text'
-              placeholder='System name?'
-              onChange={handleInputChange}
-            />
+          <div className="box">
+            <div className="Cinput">
+              <img
+                src={Computer_icon}
+                alt=""
+                title="Computer icons created by Freepik - Flaticon"
+                about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'
+              />
+              <input
+                type="text"
+                placeholder="System name?"
+                onChange={handleInputChange}
+              />
             </div>
-            <ul id='Clist'>
+            <ul id="Clist">
               {systems.map((item, index) => (
-                <li onClick={handleClick} key={index} style={{ display: filterList(item) ? '' : 'none' }}>{item}</li>
+                <li
+                  onClick={handleClick}
+                  key={index}
+                  style={{ display: filterList(item) ? "" : "none" }}
+                >
+                  {item}
+                </li>
               ))}
             </ul>
           </div>
@@ -75,5 +86,3 @@ export const ProgrammingLab = (props) => {
     </>
   );
 };
-
-

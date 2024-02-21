@@ -1,44 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 
-export const Navbar = (props) => {
-  const [isLoggedIn, setLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn") === true ? true : props.isLogged //for getting logstate from localstorage
-  );
-  const [userName, setUserName] = useState(
-    localStorage.getItem("userName") || props.userName //for getting username from localstorage
-  );
-
-  useEffect(() => {
-    setLoggedIn(
-      localStorage.getItem("isLoggedIn") === "true" ? true : props.isLogged
-    );
-    setUserName(localStorage.getItem("userName") || props.userName);
-  }, [props]);
-
-  useEffect(() => {
-    localStorage.setItem("isLoggedIn", isLoggedIn);
-    //if (userName !== "") {
-    localStorage.setItem("userName", userName);
-    //}
-    console.log("logged = " + isLoggedIn + " username = " + userName);
-  }, [isLoggedIn, userName]);
-
+export const Navbar = () => {
+  const [userName, setUserName] = useState(localStorage.getItem("userName")); //fetching username from local storage
+  const [isLogged, setLogged] = useState(localStorage.getItem("isLogged")); //fetching logged state fron local storage
   const navigate = useNavigate();
 
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
+  useEffect(() => {
+    setLogged(localStorage.getItem("isLogged"));
+    setUserName(localStorage.getItem("userName"));
+    console.log("username = " + userName + " logged = " + isLogged);
+  }, [userName, isLogged]);
 
   const LogOut = () => {
-    localStorage.setItem("isLoggedIn", "false");
     localStorage.setItem("userName", "");
-    setLoggedIn(false);
-    props.setLogged(false);
+    localStorage.setItem("isLogged", "false");
+    localStorage.setItem("systemName", "");
     setUserName("");
-    handleNavigation("/");
-    console.log("logged = " + isLoggedIn + " username = " + userName);
+    setLogged("false");
+    navigate("/");
+    //console.log("username = " + userName + " logged = " + isLogged);
   };
 
   return (
@@ -46,7 +28,7 @@ export const Navbar = (props) => {
       <a className="active" href="/About">
         About us
       </a>
-      {isLoggedIn ? (
+      {isLogged === "true" ? (
         <div className="userData" onClick={LogOut}>
           {userName}
         </div>

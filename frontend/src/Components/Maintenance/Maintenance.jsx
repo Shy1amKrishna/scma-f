@@ -1,20 +1,22 @@
-import React, { useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Maintenance.css';
-import Computer_icon from '../Assets/computer.png';
-import axios from 'axios'; // Import Axios library
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Maintenance.css";
+import Computer_icon from "../Assets/computer.png";
+import axios from "axios"; // Import Axios library
+import { Navbar } from "../Navbar/Navbar";
 
-export const Maintenance = (props) => {
+export const Maintenance = () => {
   const [complaint, setComplaint] = useState("");
-  const [systemName, setSystemName] = useState(props.SystemName);
+  const [systemName, setSystemName] = useState(
+    localStorage.getItem("systemName") //get systemname from localstorage
+  );
   const navigate = useNavigate();
-  const backendAddress = 'http://localhost:5000/complaints';
+  const backendAddress = "http://localhost:5000/complaints";
   //console.log("SystemName:",systemName);
 
-  useEffect(()=>{
-    setSystemName(props.SystemName);
-  },[props]);
-  
+  useEffect(() => {
+    setSystemName(localStorage.getItem("systemName")); //update systemname from localstorage
+  }, [systemName]);
 
   function reset() {
     setComplaint("");
@@ -26,7 +28,10 @@ export const Maintenance = (props) => {
     if (complaint.length > 10 && complaint.length < 500) {
       try {
         // Sending data to the backend using Axios
-        const result = await axios.post(backendAddress, { systemName: systemName, complaint: complaint });
+        const result = await axios.post(backendAddress, {
+          systemName: systemName,
+          complaint: complaint,
+        });
         alert(result.data);
         reset();
       } catch (error) {
@@ -39,21 +44,35 @@ export const Maintenance = (props) => {
 
   return (
     <>
-      <div className='container1'>
-        <div className='container2'>
+      <Navbar />
+      <div className="container1">
+        <div className="container2">
           <h1 className="cool-heading">Maintenance</h1>
           <div className="underline"></div>
-          <div className='box'>
+          <div className="box">
             <form onSubmit={handleSubmit}>
-              <div className='Minput'>
-                <img src={Computer_icon} alt="" title='Computer icons created by Freepik - Flaticon' about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>' />
+              <div className="Minput">
+                <img
+                  src={Computer_icon}
+                  alt=""
+                  title="Computer icons created by Freepik - Flaticon"
+                  about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'
+                />
                 <h4>{systemName}</h4> {/* Display SystemName */}
               </div>
-              <div id='ComplaintBox'>
-                <label htmlFor='Complaint'>
-                  Complaint:
-                </label>
-                <textarea autoFocus id='Complaint' type='text' name='Complaint' placeholder='Enter the problem' value={complaint} onChange={(e) => { setComplaint(e.target.value) }}></textarea>
+              <div id="ComplaintBox">
+                <label htmlFor="Complaint">Complaint:</label>
+                <textarea
+                  autoFocus
+                  id="Complaint"
+                  type="text"
+                  name="Complaint"
+                  placeholder="Enter the problem"
+                  value={complaint}
+                  onChange={(e) => {
+                    setComplaint(e.target.value);
+                  }}
+                ></textarea>
                 <button type="submit">Submit</button>
               </div>
             </form>
