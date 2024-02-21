@@ -9,9 +9,9 @@ export const Home = () => {
     navigate(path);
   };
 
-  let isLogged = true;
+  const isLogged = localStorage.getItem("isLogged");
 
-  return isLogged ? (
+  return isLogged === "true" ? (
     <>
       <Navbar />
       <div className="container1">

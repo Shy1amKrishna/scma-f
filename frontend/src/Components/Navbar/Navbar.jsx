@@ -17,6 +17,7 @@ export const Navbar = () => {
     localStorage.setItem("userName", "");
     localStorage.setItem("isLogged", "false");
     localStorage.setItem("systemName", "");
+    localStorage.setItem("Mode", "");
     setUserName("");
     setLogged("false");
     navigate("/");

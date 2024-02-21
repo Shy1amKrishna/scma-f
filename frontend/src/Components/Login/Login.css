@@ -60,7 +60,7 @@
     background:transparent;
     border:none;
     outline:none;
-    color:#797979;
+    color:#eaeaea;
     font-size: 19px;
     
 }
@@ -79,7 +79,7 @@
     align-items:center;
     width:150px;
     height:59px;
-    color:#fff;
+    color:#eaeaea;
     background:#4c00b4;
     border-radius:50px;
     font-size:19px;
@@ -87,7 +87,7 @@
     cursor:pointer;
 }
 .gray{
-    background:#EAEAEA;
+    background:#eaeaea;
     color:#676767;
 }
 .hidden{

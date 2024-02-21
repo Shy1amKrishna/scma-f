@@ -20,6 +20,8 @@ export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const Mode = localStorage.getItem("Mode");
+
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
@@ -101,14 +103,16 @@ export const Login = () => {
             <div className="dialog1">
               <p className="response">{response}</p> {/* Display response */}
             </div>
-            <div className="dialog2">
-              <p>
-                Don't have an account?
-                <span className="link" onClick={handleClick}>
-                  SignUp
-                </span>
-              </p>
-            </div>
+            {Mode === "Admin" ? null : (
+              <div className="dialog2">
+                <p>
+                  Don't have an account?
+                  <span className="link" onClick={handleClick}>
+                    SignUp
+                  </span>
+                </p>
+              </div>
+            )}
           </div>
           <div className="submit-container">
             <button type="submit" className="submit-btn">
