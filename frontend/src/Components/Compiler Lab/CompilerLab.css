@@ -15,7 +15,7 @@
 #Clist li {
   border: 2px solid #000000; /* Add a border to all list items */
   margin-top: -1px; /* Prevent double borders */
-  background-color: #ffffffd2; /* Apply a semi-transparent grey background color */
+  background-color: #ffffffb0; /* Apply a semi-transparent grey background color */
   padding: 20px; /* Add padding */
   margin-bottom: 10px; /* Add bottom margin */
   border-radius: 5px; /* Add border radius */
@@ -30,10 +30,10 @@
 }
 
   #Clist li:hover:not(.header) {
-    background-color: #000000a2; /* Add a hover effect to all links, except for headers */
-    color: white;
-    font-size: 23px;
-    transition: background-color 0.3s ease, font-size 0.3s ease; /* Combine transitions */
+    background-color: rgb(0, 0, 0); /* Add a hover effect to all links, except for headers */
+    color: rgb(0, 208, 255);
+    /*font-size: 23px;*/
+    transition: color 0.3s ease , background-color 0.3s ease;  /*Combine transitions */
   }
 
   
