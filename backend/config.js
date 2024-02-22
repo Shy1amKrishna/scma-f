@@ -24,11 +24,19 @@ const loginSchema = new mongoose.Schema({
 });
 
 const complaintSchema = new mongoose.Schema({
-  systemName: {
+  UserName: {
     type: String,
     required: true,
   },
-  complaint: {
+  Lab: {
+    type: String,
+    required: true,
+  },
+  SystemName: {
+    type: String,
+    required: true,
+  },
+  Complaint: {
     type: String,
     required: true,
   },

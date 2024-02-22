@@ -65,12 +65,14 @@ app.post("/signup", async (req, res) => {
 // Complaints endpoint
 app.post("/complaints", async (req, res) => {
   try {
-    const { systemName, complaint } = req.body;
+    const { UserName, Lab, SystemName, Complaint } = req.body;
     console.log("Complaint received from frontend:", req.body);
 
     const newComplaint = {
-      systemName: systemName,
-      complaint: complaint,
+      UserName: UserName,
+      Lab: Lab,
+      SystemName: SystemName,
+      Complaint: Complaint,
     };
 
     await collection.ComplaintModel.create(newComplaint); // Create new complaint

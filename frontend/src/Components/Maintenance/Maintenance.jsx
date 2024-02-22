@@ -8,6 +8,9 @@ import { Navbar } from "../Navbar/Navbar";
 export const Maintenance = () => {
   const [complaint, setComplaint] = useState("");
   const [systemName, setSystemName] = useState("");
+  const UserName = localStorage.getItem("userName");
+  const Lab = localStorage.getItem("Lab");
+  //console.log(Lab);
   const navigate = useNavigate();
   const backendAddress = "http://localhost:5000/complaints";
   //console.log("SystemName:",systemName);
@@ -23,8 +26,10 @@ export const Maintenance = () => {
       try {
         // Sending data to the backend using Axios
         const result = await axios.post(backendAddress, {
-          systemName: systemName,
-          complaint: complaint,
+          UserName: UserName,
+          Lab: Lab,
+          SystemName: systemName,
+          Complaint: complaint,
         });
         alert(result.data);
         reset();
