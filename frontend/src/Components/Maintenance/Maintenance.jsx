@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Maintenance.css";
 import Computer_icon from "../Assets/computer.png";
@@ -7,16 +7,10 @@ import { Navbar } from "../Navbar/Navbar";
 
 export const Maintenance = () => {
   const [complaint, setComplaint] = useState("");
-  const [systemName, setSystemName] = useState(
-    localStorage.getItem("systemName") //get systemname from localstorage
-  );
+  const [systemName, setSystemName] = useState("");
   const navigate = useNavigate();
   const backendAddress = "http://localhost:5000/complaints";
   //console.log("SystemName:",systemName);
-
-  useEffect(() => {
-    setSystemName(localStorage.getItem("systemName")); //update systemname from localstorage
-  }, [systemName]);
 
   function reset() {
     setComplaint("");
@@ -51,14 +45,19 @@ export const Maintenance = () => {
           <div className="underline"></div>
           <div className="box">
             <form onSubmit={handleSubmit}>
-              <div className="Minput">
+              <div className="Cinput">
                 <img
                   src={Computer_icon}
-                  alt=""
+                  alt="Computer Icon"
                   title="Computer icons created by Freepik - Flaticon"
-                  about='<a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a>'
                 />
-                <h4>{systemName}</h4> {/* Display SystemName */}
+                <input
+                  type="text"
+                  placeholder="System number?"
+                  onChange={(e) => {
+                    setSystemName(e.target.value);
+                  }}
+                />
               </div>
               <div id="ComplaintBox">
                 <label htmlFor="Complaint">Complaint:</label>
