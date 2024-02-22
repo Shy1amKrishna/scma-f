@@ -5,7 +5,18 @@ import { Navbar } from "../Navbar/Navbar";
 export const Home = () => {
   const navigate = useNavigate();
 
-  const handleDivClick = (path) => {
+  const CompilerLabClick = (path) => {
+    localStorage.setItem("Lab", "Compiler Lab");
+    navigate(path);
+  };
+
+  const SoftwareLabClick = (path) => {
+    localStorage.setItem("Lab", "Software Lab");
+    navigate(path);
+  };
+
+  const ProgrammingLabClick = (path) => {
+    localStorage.setItem("Lab", "Programming Lab");
     navigate(path);
   };
 
@@ -20,19 +31,19 @@ export const Home = () => {
           <div className="inputs">
             <div
               className="input"
-              onClick={() => handleDivClick("/home/compilerLab")}
+              onClick={() => CompilerLabClick("/home/compilerLab")}
             >
               <h2>Compiler Lab</h2>
             </div>
             <div
               className="input"
-              onClick={() => handleDivClick("/home/programmingLab")}
+              onClick={() => ProgrammingLabClick("/home/programmingLab")}
             >
               <h2>Programming Lab</h2>
             </div>
             <div
               className="input"
-              onClick={() => handleDivClick("/home/softwareLab")}
+              onClick={() => SoftwareLabClick("/home/softwareLab")}
             >
               <h2>Software Lab</h2>
             </div>
