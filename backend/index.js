@@ -86,7 +86,8 @@ app.post("/complaints", async (req, res) => {
 // Get list of systems endpoint
 app.get("/systems", async (req, res) => {
   try {
-    const systems = await collection.SystemModel.find(); // Fetch list of systems from database
+    //const systems = await collection.SystemModel.find(); // Fetch list of systems from database
+    const systems = await collection.ComplaintModel.find(); // Fetch list of systems from database
     return res.json(systems); // Return list of systems as JSON response
   } catch (err) {
     console.error(err);

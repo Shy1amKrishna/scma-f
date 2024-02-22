@@ -29,6 +29,7 @@ export const CompilerLab = () => {
       try {
         const response = await axios.get("http://localhost:5000/systems");
         setSystems(response.data);
+        console.log("Data:\n" + JSON.stringify(response.data));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -38,6 +39,7 @@ export const CompilerLab = () => {
 
   // Function to filter list based on input
   const filterList = (item) => {
+    if (!item) return false;
     const txtValue = item.toUpperCase();
     return txtValue.includes(filter);
   };
@@ -57,18 +59,37 @@ export const CompilerLab = () => {
               />
               <input
                 type="text"
-                placeholder="System number?"
+                placeholder="System name?"
                 onChange={handleInputChange}
               />
             </div>
-            <ul id="Clist">
+            <ul id="Clist" style={{ listStyleType: "none", padding: 0 }}>
               {systems.map((item, index) => (
                 <li
                   onClick={handleClick}
                   key={index}
-                  style={{ display: filterList(item.name) ? "" : "none" }}
+                  style={{
+                    display:
+                      filterList(item.UserName) ||
+                      filterList(item.Lab) ||
+                      filterList(item.SystemName) ||
+                      filterList(item.Complaint)
+                        ? ""
+                        : "none",
+                  }}
                 >
-                  {item.name}
+                  <div style={{ marginBottom: "10px" }}>
+                    <strong>User name:</strong> {item.UserName}
+                  </div>
+                  <div style={{ marginBottom: "10px" }}>
+                    <strong>Lab:</strong> {item.Lab}
+                  </div>
+                  <div style={{ marginBottom: "10px" }}>
+                    <strong>System name:</strong> {item.SystemName}
+                  </div>
+                  <div style={{ marginBottom: "10px" }}>
+                    <strong>Complaint:</strong> {item.Complaint}
+                  </div>
                 </li>
               ))}
             </ul>

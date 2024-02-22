@@ -4,7 +4,7 @@
     margin: 0;
     overflow-y: auto;
     max-height: 450px;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 5px;
 }
 /*To disable scrollbar*/
@@ -12,22 +12,30 @@
 #Clist{ overflow: -moz-scrollbars-none; }
 #Clist{ -ms-overflow-style: none; }
 /*---------------------------------------------------*/
-#Clist li{
-    border: 1px solid #000000; /* Add a border to all links */
-    margin-top: -1px; /* Prevent double borders */
-    background-color: #f6f6f6af; /* Grey background color */
-    padding: 12px; /* Add some padding */
-    text-decoration: none; /* Remove default text underline */
-    font-size: 18px; /* Increase the font-size */
-    color: black; /* Add a black text color */
-    display: block; /* Make it into a block element to fill the whole list */
-    width:500px;
-  }
+#Clist li {
+  border: 2px solid #000000; /* Add a border to all list items */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #ffffffd2; /* Apply a semi-transparent grey background color */
+  padding: 20px; /* Add padding */
+  margin-bottom: 10px; /* Add bottom margin */
+  border-radius: 5px; /* Add border radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Add transition effect */
+  font-size: 18px; /* Increase font size */
+  font-family: monospace; /* Set font family to monospace */
+  color: black; /* Set text color to black */
+  display: block; /* Make it into a block element to fill the whole list */
+  width: 490px; /* Set a fixed width */
+}
+
   #Clist li:hover:not(.header) {
-    background-color: #000000b7; /* Add a hover effect to all links, except for headers */
+    background-color: #000000a2; /* Add a hover effect to all links, except for headers */
     color: white;
-    font-size: 20px;
+    font-size: 23px;
+    transition: background-color 0.3s ease, font-size 0.3s ease; /* Combine transitions */
   }
+
   
   .box{
     margin: 10px;
