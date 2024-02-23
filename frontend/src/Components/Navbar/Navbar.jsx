@@ -31,6 +31,11 @@ export const Navbar = () => {
         About us
       </a>
       {isLogged === "true" ? (
+        <a className="active" href="/home/MyComplaints">
+          My complaints
+        </a>
+      ) : null}
+      {isLogged === "true" ? (
         <div className="userData" onClick={LogOut}>
           {userName}
         </div>

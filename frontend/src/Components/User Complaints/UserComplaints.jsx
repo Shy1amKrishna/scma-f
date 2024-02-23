@@ -23,6 +23,10 @@ export const UserComplaints = () => {
     localStorage.setItem("systemName", systemName); //setting sytemName in localstorage
   };
 
+  const handleButtonClick = () => {
+    console.log("Fixed");
+  };
+
   useEffect(() => {
     // Fetch systems from MongoDB using Axios
     const fetchSystems = async () => {
@@ -101,7 +105,7 @@ export const UserComplaints = () => {
                     <strong>Status:</strong> {item.Status}
                   </div>
                   <div style={{ marginBottom: "10px" }}>
-                    <button>
+                    <button onClick={handleButtonClick}>
                       <strong>Fixed</strong>
                     </button>
                   </div>

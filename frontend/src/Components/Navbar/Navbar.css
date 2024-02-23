@@ -17,28 +17,27 @@
 
 /* Change the color of links on hover */
 .topnav a.active:hover{
-    background-color: #ffffff;
-    color: black;
+    background-color: #0080ff;
+    color: rgb(255, 255, 255);
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
     color: white;
-    border-radius:0px 5px 5px 0px ;
+    /*border-radius:0px 5px 5px 0px ;*/
 }
 
 .topnav div.userData{
     float: right;
-    color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 1em; /* Adjusted font size using relative unit */
-    background-color: #14123b;
+    background-color: #000000;
     color: white;
-    border-radius:5px 0px 0px 5px ;
+    /*border-radius:5px 0px 0px 5px ;*/
 }
 .topnav div.userData:hover{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     color: black;
 }
