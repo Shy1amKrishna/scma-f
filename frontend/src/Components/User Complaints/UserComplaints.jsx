@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./CompilerLab.css";
+import "./UserComplaints.css";
 import ComputerIcon from "../Assets/computer.png"; // Renamed variable to follow convention
 import { Navbar } from "../Navbar/Navbar";
 
-export const CompilerLab = () => {
+export const UserComplaints = () => {
   const [filter, setFilter] = useState("");
   const [systems, setSystems] = useState([]);
   const navigate = useNavigate();
@@ -27,7 +27,9 @@ export const CompilerLab = () => {
     // Fetch systems from MongoDB using Axios
     const fetchSystems = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/systems");
+        const response = await axios.get(
+          "http://localhost:5000/usercomplaints"
+        );
         setSystems(response.data);
         //console.log("Data:\n" + JSON.stringify(response.data));
       } catch (error) {
@@ -97,6 +99,11 @@ export const CompilerLab = () => {
                   </div>
                   <div style={{ marginBottom: "10px" }}>
                     <strong>Status:</strong> {item.Status}
+                  </div>
+                  <div style={{ marginBottom: "10px" }}>
+                    <button>
+                      <strong>Fixed</strong>
+                    </button>
                   </div>
                 </li>
               ))}

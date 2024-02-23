@@ -86,12 +86,12 @@ app.post("/complaints", async (req, res) => {
 });
 
 // Get list of comlaints for admin endpoint
-app.get("/systems", async (req, res) => {
+app.get("/usercomplaints", async (req, res) => {
   try {
-    //const systems = await collection.SystemModel.find(); // Fetch list of systems from database
-    const systems = await collection.ComplaintModel.find();
-    //console.log(systems);
-    return res.json(systems); // Return list of systems as JSON response
+    //const usercomplaints = await collection.SystemModel.find(); // Fetch list of usercomplaints from database
+    const usercomplaints = await collection.ComplaintModel.find();
+    //console.log(usercomplaints);
+    return res.json(usercomplaints); // Return list of usercomplaints as JSON response
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error

@@ -3,7 +3,7 @@ import "./App.css";
 import { Home } from "./Components/Home/Home";
 import { Login } from "./Components/Login/Login";
 import { NotFoundPage } from "./Components/NotFoundPage/NotFoundPage";
-import { CompilerLab } from "./Components/Compiler Lab/CompilerLab";
+import { UserComplaints } from "./Components/User Complaints/UserComplaints";
 import { SoftwareLab } from "./Components/Software Lab/SoftwareLab";
 import { MyComplaints } from "./Components/My Complaints/MyComplaints";
 import { Routes, Route } from "react-router-dom";
@@ -21,7 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/home/compilerLab" element={<CompilerLab />} />
+        <Route path="/home/UserComplaints" element={<UserComplaints />} />
         <Route path="/home/softwareLab" element={<SoftwareLab />} />
         <Route path="/home/MyComplaints" element={<MyComplaints />} />
         <Route path="/home/Maintenance" element={<Maintenance />} />
