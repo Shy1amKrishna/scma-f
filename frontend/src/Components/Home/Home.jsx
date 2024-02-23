@@ -37,7 +37,7 @@ export const Home = () => {
             </div>
             <div
               className="input"
-              onClick={() => ProgrammingLabClick("/home/programmingLab")}
+              onClick={() => ProgrammingLabClick("/home/MyComplaints")}
             >
               <h2>Programming Lab</h2>
             </div>

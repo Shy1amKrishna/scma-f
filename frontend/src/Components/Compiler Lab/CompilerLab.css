@@ -30,10 +30,15 @@
 }
 
   #Clist li:hover:not(.header) {
-    background-color: rgb(0, 0, 0); /* Add a hover effect to all links, except for headers */
+    background-color: rgba(0, 0, 0, 0.827); /* Add a hover effect to all links, except for headers */
     color: rgb(0, 208, 255);
     /*font-size: 23px;*/
     transition: color 0.3s ease , background-color 0.3s ease;  /*Combine transitions */
+  }
+
+  #Clist li:hover strong{
+    color: rgb(255, 255, 255);
+    transition: color 0.3s ease ;  /*Combine transitions */
   }
 
   

@@ -10,7 +10,7 @@ export const Navbar = () => {
   useEffect(() => {
     setLogged(localStorage.getItem("isLogged"));
     setUserName(localStorage.getItem("userName"));
-    console.log("username = " + userName + " logged = " + isLogged);
+    //console.log("username = " + userName + " logged = " + isLogged);
   }, [userName, isLogged]);
 
   const LogOut = () => {

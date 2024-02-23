@@ -15,6 +15,19 @@ export const Maintenance = () => {
   const backendAddress = "http://localhost:5000/complaints";
   //console.log("SystemName:",systemName);
 
+  // Create a new Date object
+  let currentDate = new Date();
+
+  // Get the current date
+  let day = currentDate.getDate();
+  let month = currentDate.getMonth() + 1; // Months are zero-based, so January is 0
+  let year = currentDate.getFullYear();
+
+  // Format the date as desired
+  let formattedDate = day + "/" + month + "/" + year;
+
+  //console.log(formattedDate); // Output: e.g., 23/2/2024
+
   function reset() {
     setComplaint("");
     navigate("../Home");
@@ -30,6 +43,7 @@ export const Maintenance = () => {
           Lab: Lab,
           SystemName: systemName,
           Complaint: complaint,
+          Date: formattedDate,
         });
         alert(result.data);
         reset();

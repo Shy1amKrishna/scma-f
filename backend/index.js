@@ -65,7 +65,7 @@ app.post("/signup", async (req, res) => {
 // Complaints endpoint
 app.post("/complaints", async (req, res) => {
   try {
-    const { UserName, Lab, SystemName, Complaint } = req.body;
+    const { UserName, Lab, SystemName, Complaint, Date } = req.body;
     console.log("Complaint received from frontend:", req.body);
 
     const newComplaint = {
@@ -73,6 +73,8 @@ app.post("/complaints", async (req, res) => {
       Lab: Lab,
       SystemName: SystemName,
       Complaint: Complaint,
+      Date: Date,
+      Status: "Not fixed",
     };
 
     await collection.ComplaintModel.create(newComplaint); // Create new complaint
@@ -83,12 +85,31 @@ app.post("/complaints", async (req, res) => {
   }
 });
 
-// Get list of systems endpoint
+// Get list of comlaints for admin endpoint
 app.get("/systems", async (req, res) => {
   try {
     //const systems = await collection.SystemModel.find(); // Fetch list of systems from database
-    const systems = await collection.ComplaintModel.find(); // Fetch list of systems from database
+    const systems = await collection.ComplaintModel.find();
+    //console.log(systems);
     return res.json(systems); // Return list of systems as JSON response
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error
+  }
+});
+
+//get list of complaints for user endpoint
+app.get("/mycomplaints/:username", async (req, res) => {
+  try {
+    const username = req.params.username;
+
+    // Fetch data from the database based on the username
+    const mycomplaints = await collection.ComplaintModel.find({
+      UserName: username,
+    });
+
+    //console.log(mycomplaints);
+    return res.json(mycomplaints); // Return list of mycomplaints as JSON response
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Internal Server Error" }); // Return error for any server-side error

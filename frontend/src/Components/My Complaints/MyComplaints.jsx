@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./CompilerLab.css";
+import "./MyComplaints.css";
 import ComputerIcon from "../Assets/computer.png"; // Renamed variable to follow convention
 import { Navbar } from "../Navbar/Navbar";
 
-export const CompilerLab = () => {
+export const MyComplaints = () => {
+  const loggedUser = localStorage.getItem("userName");
   const [filter, setFilter] = useState("");
+  //const [filter, setFilter] = useState(loggedUser.toUpperCase());
   const [systems, setSystems] = useState([]);
   const navigate = useNavigate();
   const path = "/home/Maintenance";
@@ -17,17 +19,19 @@ export const CompilerLab = () => {
   };
 
   // Function to handle click event on system name
-  const handleClick = async (event) => {
-    const systemName = event.target.textContent;
+  const handleClick = async () => {
+    //const systemName = event.target.textContent;
     navigate(path);
-    localStorage.setItem("systemName", systemName); //setting sytemName in localstorage
+    //localStorage.setItem("systemName", systemName); //setting sytemName in localstorage
   };
 
   useEffect(() => {
     // Fetch systems from MongoDB using Axios
     const fetchSystems = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/systems");
+        const response = await axios.get(
+          "http://localhost:5000/mycomplaints/" + loggedUser
+        );
         setSystems(response.data);
         //console.log("Data:\n" + JSON.stringify(response.data));
       } catch (error) {
@@ -35,7 +39,7 @@ export const CompilerLab = () => {
       }
     };
     fetchSystems();
-  }, []); // Empty dependency array ensures useEffect runs only once on component mount
+  }, [loggedUser]); // Empty dependency array ensures useEffect runs only once on component mount
 
   // Function to filter list based on input
   const filterList = (item) => {
@@ -49,7 +53,7 @@ export const CompilerLab = () => {
       <Navbar />
       <div className="container1">
         <div className="container2">
-          <h1 className="cool-heading">user complaints</h1>
+          <h1 className="cool-heading">my complaints</h1>
           <div className="box">
             <div className="Cinput">
               <img

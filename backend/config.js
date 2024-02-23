@@ -40,6 +40,14 @@ const complaintSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  Date: {
+    type: String,
+    required: true,
+  },
+  Status: {
+    type: String,
+    required: true,
+  },
 });
 
 const systemSchema = new mongoose.Schema({
