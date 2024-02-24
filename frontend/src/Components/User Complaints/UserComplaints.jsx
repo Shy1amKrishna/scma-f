@@ -13,10 +13,6 @@ export const UserComplaints = () => {
     setFilter(event.target.value.toUpperCase());
   };
 
-  const handleButtonClick = () => {
-    console.log("Fixed");
-  };
-
   useEffect(() => {
     // Fetch systems from MongoDB using Axios
     const fetchSystems = async () => {
@@ -38,6 +34,38 @@ export const UserComplaints = () => {
     if (!item) return false;
     const txtValue = item.toUpperCase();
     return txtValue.includes(filter);
+  };
+
+  const handleButtonClick = async (itemId) => {
+    try {
+      await axios.put(`http://localhost:5000/complaints/${itemId}`, {
+        status: "Fixed",
+      });
+
+      // Refetch the updated list of systems from the server
+      const response = await axios.get("http://localhost:5000/usercomplaints");
+      setSystems(response.data);
+
+      console.log("Status updated successfully");
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
+  const handleNotButtonClick = async (itemId) => {
+    try {
+      await axios.put(`http://localhost:5000/complaints/${itemId}`, {
+        status: "Not Fixed",
+      });
+
+      // Refetch the updated list of systems from the server
+      const response = await axios.get("http://localhost:5000/usercomplaints");
+      setSystems(response.data);
+
+      console.log("Status updated successfully");
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
   };
 
   return (
@@ -93,9 +121,15 @@ export const UserComplaints = () => {
                   <div style={{ marginBottom: "10px" }}>
                     <strong>Status:</strong> {item.Status}
                   </div>
-                  <div style={{ marginBottom: "10px" }}>
-                    <button onClick={handleButtonClick}>
+                  <div
+                    style={{ marginBottom: "10px" }}
+                    className="button-container"
+                  >
+                    <button onClick={() => handleButtonClick(item._id)}>
                       <strong>Fixed</strong>
+                    </button>
+                    <button onClick={() => handleNotButtonClick(item._id)}>
+                      <strong>Not Fixed</strong>
                     </button>
                   </div>
                 </li>

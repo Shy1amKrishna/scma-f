@@ -48,11 +48,14 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px; /* Add margin to the right of each button */
   }
 
   #Clist li button:hover{
     background-color: #0056b3;
   }
+
+  
 
   
   .box{

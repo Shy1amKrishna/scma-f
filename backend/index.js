@@ -116,6 +116,22 @@ app.get("/mycomplaints/:username", async (req, res) => {
   }
 });
 
+// Update complaint status endpoint
+app.put("/complaints/:id", async (req, res) => {
+  try {
+    const { id } = req.params; // Extract complaint ID from request parameters
+    const { status } = req.body; // Extract new status from request body
+
+    // Update the status of the complaint with the provided ID
+    await collection.ComplaintModel.findByIdAndUpdate(id, { Status: status });
+
+    return res.send("Complaint status updated successfully");
+  } catch (error) {
+    console.error("Error updating complaint status:", error);
+    return res.status(500).send("Internal server error"); // Return error for any server-side error
+  }
+});
+
 const port = process.env.PORT || 5000; // Set port for server
 app.listen(port, () => {
   console.log("Server running on port:", port); // Start server and log port number
