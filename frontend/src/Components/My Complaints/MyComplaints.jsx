@@ -11,7 +11,7 @@ export const MyComplaints = () => {
   //const [filter, setFilter] = useState(loggedUser.toUpperCase());
   const [systems, setSystems] = useState([]);
   const navigate = useNavigate();
-  const path = "/home/Maintenance";
+  const path = "/Maintenance";
 
   // Function to handle input change for filtering
   const handleInputChange = (event) => {
@@ -36,6 +36,7 @@ export const MyComplaints = () => {
         //console.log("Data:\n" + JSON.stringify(response.data));
       } catch (error) {
         console.error("Error fetching data:", error);
+        return <h2>Error fetching data. Please try again later.</h2>;
       }
     };
     fetchSystems();
@@ -47,6 +48,20 @@ export const MyComplaints = () => {
     const txtValue = item.toUpperCase();
     return txtValue.includes(filter);
   };
+
+  if (systems.length === 0) {
+    return (
+      <>
+        <Navbar />
+        <div className="container1">
+          <div className="container2">
+            <h1 className="cool-heading">My Complaints</h1>
+            <h2>You haven't made any complaints yet.</h2>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

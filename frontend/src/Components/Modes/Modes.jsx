@@ -26,7 +26,7 @@ export const Modes = () => {
             <div className="input" onClick={() => handleUserClick("/login")}>
               <h2>USER</h2>
             </div>
-            <div className="input" onClick={() => handleAdminClick("login")}>
+            <div className="input" onClick={() => handleAdminClick("/login")}>
               <h2>ADMIN</h2>
             </div>
           </div>

@@ -30,7 +30,7 @@ export const Maintenance = () => {
 
   function reset() {
     setComplaint("");
-    navigate("../Home");
+    navigate("../home");
   }
 
   async function handleSubmit(e) {
@@ -72,7 +72,7 @@ export const Maintenance = () => {
                 />
                 <input
                   type="text"
-                  placeholder="System number?"
+                  placeholder="System name?"
                   onChange={(e) => {
                     setSystemName(e.target.value);
                   }}

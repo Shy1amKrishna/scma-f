@@ -20,9 +20,9 @@ export const Home = () => {
     navigate(path);
   };
 
-  const isLogged = localStorage.getItem("isLogged");
+  //const isLogged = localStorage.getItem("isLogged");
 
-  return isLogged === "true" ? (
+  return (
     <>
       <Navbar />
       <div className="container1">
@@ -31,19 +31,19 @@ export const Home = () => {
           <div className="inputs">
             <div
               className="input"
-              onClick={() => CompilerLabClick("/home/UserComplaints")}
+              onClick={() => CompilerLabClick("/Maintenance")}
             >
               <h2>Compiler Lab</h2>
             </div>
             <div
               className="input"
-              onClick={() => ProgrammingLabClick("/home/MyComplaints")}
+              onClick={() => ProgrammingLabClick("/Maintenance")}
             >
               <h2>Programming Lab</h2>
             </div>
             <div
               className="input"
-              onClick={() => SoftwareLabClick("/home/softwareLab")}
+              onClick={() => SoftwareLabClick("/Maintenance")}
             >
               <h2>Software Lab</h2>
             </div>
@@ -51,7 +51,5 @@ export const Home = () => {
         </div>
       </div>
     </>
-  ) : (
-    <h2>Please login to continue......</h2>
   );
 };

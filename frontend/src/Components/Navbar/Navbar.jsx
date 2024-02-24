@@ -5,13 +5,15 @@ import { useNavigate } from "react-router-dom";
 export const Navbar = () => {
   const [userName, setUserName] = useState(localStorage.getItem("userName")); //fetching username from local storage
   const [isLogged, setLogged] = useState(localStorage.getItem("isLogged")); //fetching logged state fron local storage
+  const [mode, setMode] = useState(localStorage.getItem("Mode")); //fetching Mode fron local storage
   const navigate = useNavigate();
 
   useEffect(() => {
     setLogged(localStorage.getItem("isLogged"));
     setUserName(localStorage.getItem("userName"));
+    setMode(localStorage.getItem("Mode"));
     //console.log("username = " + userName + " logged = " + isLogged);
-  }, [userName, isLogged]);
+  }, [userName, isLogged, mode]);
 
   const LogOut = () => {
     localStorage.setItem("userName", "");
@@ -30,8 +32,8 @@ export const Navbar = () => {
       <a className="active" href="/About">
         About us
       </a>
-      {isLogged === "true" ? (
-        <a className="active" href="/home/MyComplaints">
+      {isLogged === "true" && mode === "User" ? (
+        <a className="active" href="/MyComplaints">
           My complaints
         </a>
       ) : null}
