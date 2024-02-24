@@ -38,9 +38,12 @@ export const Navbar = () => {
         </a>
       ) : null}
       {isLogged === "true" ? (
-        <div className="userData" onClick={LogOut}>
-          {userName}
-        </div>
+        <>
+          <div className="logOut" onClick={LogOut}>
+            Logout
+          </div>
+          <div className="userData">{userName}</div>
+        </>
       ) : null}
     </div>
   );

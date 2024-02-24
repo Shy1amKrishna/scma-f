@@ -27,7 +27,7 @@
     /*border-radius:0px 5px 5px 0px ;*/
 }
 
-.topnav div.userData{
+.topnav div.logOut{
     float: right;
     text-align: center;
     padding: 14px 16px;
@@ -37,7 +37,18 @@
     color: white;
     /*border-radius:5px 0px 0px 5px ;*/
 }
-.topnav div.userData:hover{
+.topnav div.logOut:hover{
     background-color: rgb(255, 255, 255);
     color: black;
+}
+
+.topnav div.userData{
+    float: right;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1em; /* Adjusted font size using relative unit */
+    background-color: #000000;
+    color: white;
+    /*border-radius:5px 0px 0px 5px ;*/
 }
