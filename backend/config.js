@@ -63,11 +63,13 @@ const systemSchema = new mongoose.Schema({
 
 // Create models
 const UserModel = mongoose.model("users", loginSchema);
+const AdminModel = mongoose.model("admins", loginSchema);
 const ComplaintModel = mongoose.model("complaints", complaintSchema);
 const SystemModel = mongoose.model("systems", systemSchema);
 
 // Export models
 module.exports = {
+  AdminModel: AdminModel,
   UserModel: UserModel,
   ComplaintModel: ComplaintModel,
   SystemModel: SystemModel,

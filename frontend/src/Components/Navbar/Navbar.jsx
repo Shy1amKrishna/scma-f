@@ -37,6 +37,11 @@ export const Navbar = () => {
           My complaints
         </a>
       ) : null}
+      {isLogged === "true" && mode === "Admin" ? (
+        <a className="active" href="/signup">
+          Add Admins
+        </a>
+      ) : null}
       {isLogged === "true" ? (
         <>
           <div className="logOut" onClick={LogOut}>

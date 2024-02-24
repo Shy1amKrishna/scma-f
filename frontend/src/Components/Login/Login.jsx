@@ -9,7 +9,8 @@ import { Navbar } from "../Navbar/Navbar";
 export const Login = () => {
   const navigate = useNavigate();
   const path = "/signup";
-  const backendAddress = "http://localhost:5000/login";
+  const backendAddressUser = "http://localhost:5000/Userlogin";
+  const backendAddressAdmin = "http://localhost:5000/Adminlogin";
 
   function handleClick() {
     navigate(path);
@@ -24,34 +25,64 @@ export const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
+    if (Mode === "User") {
+      try {
+        const response = await axios.post(backendAddressUser, {
+          username: username,
+          password: password,
+        });
 
-    try {
-      const response = await axios.post(backendAddress, {
-        username: username,
-        password: password,
-      });
+        // Set the response state
+        setResponse(response.data);
 
-      // Set the response state
-      setResponse(response.data);
+        // Assuming the backend returns a token upon successful login
+        const token = response.data.token;
 
-      // Assuming the backend returns a token upon successful login
-      const token = response.data.token;
+        // You can store the token in local storage or state for future use
+        localStorage.setItem("token", token);
+        console.log(response.data);
+        //console.log(response.data.token);
 
-      // You can store the token in local storage or state for future use
-      localStorage.setItem("token", token);
-      console.log(response.data);
-      //console.log(response.data.token);
-
-      // Redirect or perform other actions upon successful login
-      if (response.data === "Login successful") {
-        Mode === "Admin" ? navigate("/UserComplaints") : navigate("/home");
-        localStorage.setItem("userName", username); //setting username in local storage
-        localStorage.setItem("isLogged", "true"); //setting  logged state in local storage
+        // Redirect or perform other actions upon successful login
+        if (response.data === "Login successful") {
+          Mode === "Admin" ? navigate("/UserComplaints") : navigate("/home");
+          localStorage.setItem("userName", username); //setting username in local storage
+          localStorage.setItem("isLogged", "true"); //setting  logged state in local storage
+        }
+      } catch (error) {
+        // Handle login error
+        alert("Sorry something wrong happened.\n" + error);
+        console.error("Login failed:", error.message);
       }
-    } catch (error) {
-      // Handle login error
-      alert("Sorry something wrong happened.\n" + error);
-      console.error("Login failed:", error.message);
+    } else {
+      try {
+        const response = await axios.post(backendAddressAdmin, {
+          username: username,
+          password: password,
+        });
+
+        // Set the response state
+        setResponse(response.data);
+
+        // Assuming the backend returns a token upon successful login
+        const token = response.data.token;
+
+        // You can store the token in local storage or state for future use
+        localStorage.setItem("token", token);
+        console.log(response.data);
+        //console.log(response.data.token);
+
+        // Redirect or perform other actions upon successful login
+        if (response.data === "Login successful") {
+          Mode === "Admin" ? navigate("/UserComplaints") : navigate("/home");
+          localStorage.setItem("userName", username); //setting username in local storage
+          localStorage.setItem("isLogged", "true"); //setting  logged state in local storage
+        }
+      } catch (error) {
+        // Handle login error
+        alert("Sorry something wrong happened.\n" + error);
+        console.error("Login failed:", error.message);
+      }
     }
   };
 

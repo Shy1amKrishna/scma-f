@@ -13,8 +13,8 @@ app.use((err, req, res, next) => {
   res.status(500).send("Internal Server Error");
 });
 
-// Login endpoint
-app.post("/login", async (req, res) => {
+//User Login endpoint
+app.post("/Userlogin", async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await collection.UserModel.findOne({ name: username });
@@ -36,8 +36,31 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// Signup endpoint
-app.post("/signup", async (req, res) => {
+//Admin Login endpoint
+app.post("/Adminlogin", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await collection.AdminModel.findOne({ name: username });
+
+    if (!user) {
+      return res.status(404).send("User not found"); // Return error if user not found
+    }
+
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
+
+    if (isPasswordMatch) {
+      return res.send("Login successful"); // Return success message if password matches
+    } else {
+      return res.status(401).send("Incorrect password"); // Return error if password is incorrect
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).send("Internal server error"); // Return error for any server-side error
+  }
+});
+
+// user Signup endpoint
+app.post("/UserSignup", async (req, res) => {
   try {
     const { username, password } = req.body;
     const existingUser = await collection.UserModel.findOne({ name: username });
@@ -55,6 +78,34 @@ app.post("/signup", async (req, res) => {
     };
 
     await collection.UserModel.create(newUser); // Create new user
+    return res.send("User created successfully.");
+  } catch (error) {
+    console.error("Signup error:", error);
+    return res.status(500).send("Internal server error"); // Return error for any server-side error
+  }
+});
+
+// Admin Signup endpoint
+app.post("/AdminSignup", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const existingUser = await collection.AdminModel.findOne({
+      name: username,
+    });
+
+    if (existingUser) {
+      return res.send("User already exists. Please try another username."); // Return error if user already exists
+    }
+
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    const newUser = {
+      name: username,
+      password: hashedPassword,
+    };
+
+    await collection.AdminModel.create(newUser); // Create new user
     return res.send("User created successfully.");
   } catch (error) {
     console.error("Signup error:", error);

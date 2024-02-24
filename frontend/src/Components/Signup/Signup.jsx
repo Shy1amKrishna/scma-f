@@ -16,24 +16,42 @@ export const Signup = () => {
   const [response, setResponse] = useState(null); // Initialize with null
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const backendAddress = "http://localhost:5000/signup";
+  const backendAddressUser = "http://localhost:5000/UserSignup";
+  const backendAddressAdmin = "http://localhost:5000/AdminSignup";
+  const Mode = localStorage.getItem("Mode");
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    if (Mode === "User") {
+      try {
+        const response = await axios.post(backendAddressUser, {
+          username: username,
+          password: password,
+        });
 
-    try {
-      const response = await axios.post(backendAddress, {
-        username: username,
-        password: password,
-      });
+        // Handle successful signup (e.g., show success message, redirect)
+        console.log(response.data);
+        // Set the response state
+        setResponse(response.data);
+      } catch (error) {
+        // Handle login error
+        console.error("Signup failed:", error.message);
+      }
+    } else {
+      try {
+        const response = await axios.post(backendAddressAdmin, {
+          username: username,
+          password: password,
+        });
 
-      // Handle successful signup (e.g., show success message, redirect)
-      console.log(response.data);
-      // Set the response state
-      setResponse(response.data);
-    } catch (error) {
-      // Handle login error
-      console.error("Signup failed:", error.message);
+        // Handle successful signup (e.g., show success message, redirect)
+        console.log(response.data);
+        // Set the response state
+        setResponse(response.data);
+      } catch (error) {
+        // Handle login error
+        console.error("Signup failed:", error.message);
+      }
     }
   };
 
@@ -82,14 +100,16 @@ export const Signup = () => {
             <div className="dialog1">
               <p className="response">{response}</p> {/* Display response */}
             </div>
-            <div className="dialog2">
-              <p>
-                Already have an account?
-                <span className="link" onClick={handleClick}>
-                  Login
-                </span>
-              </p>
-            </div>
+            {Mode === "Admin" ? null : (
+              <div className="dialog2">
+                <p>
+                  Already have an account?
+                  <span className="link" onClick={handleClick}>
+                    Login
+                  </span>
+                </p>
+              </div>
+            )}
           </div>
           <div className="submit-container">
             <button type="submit" className="submit-btn">
