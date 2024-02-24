@@ -89,7 +89,9 @@ app.post("/complaints", async (req, res) => {
 app.get("/usercomplaints", async (req, res) => {
   try {
     //const usercomplaints = await collection.SystemModel.find(); // Fetch list of usercomplaints from database
-    const usercomplaints = await collection.ComplaintModel.find();
+    const usercomplaints = await collection.ComplaintModel.find().sort({
+      Status: -1, //sorting in descenting order
+    });
     //console.log(usercomplaints);
     return res.json(usercomplaints); // Return list of usercomplaints as JSON response
   } catch (err) {
@@ -106,6 +108,8 @@ app.get("/mycomplaints/:username", async (req, res) => {
     // Fetch data from the database based on the username
     const mycomplaints = await collection.ComplaintModel.find({
       UserName: username,
+    }).sort({
+      Status: -1, //sorting in descenting order
     });
 
     //console.log(mycomplaints);
@@ -123,7 +127,11 @@ app.put("/complaints/:id", async (req, res) => {
     const { status } = req.body; // Extract new status from request body
 
     // Update the status of the complaint with the provided ID
-    await collection.ComplaintModel.findByIdAndUpdate(id, { Status: status });
+    await collection.ComplaintModel.findByIdAndUpdate(id, {
+      Status: status,
+    }).sort({
+      Status: -1, //sorting in descenting order
+    });
 
     return res.send("Complaint status updated successfully");
   } catch (error) {

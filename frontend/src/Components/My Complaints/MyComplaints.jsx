@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./MyComplaints.css";
 import ComputerIcon from "../Assets/computer.png"; // Renamed variable to follow convention
@@ -10,19 +9,10 @@ export const MyComplaints = () => {
   const [filter, setFilter] = useState("");
   //const [filter, setFilter] = useState(loggedUser.toUpperCase());
   const [systems, setSystems] = useState([]);
-  const navigate = useNavigate();
-  const path = "/Maintenance";
 
   // Function to handle input change for filtering
   const handleInputChange = (event) => {
     setFilter(event.target.value.toUpperCase());
-  };
-
-  // Function to handle click event on system name
-  const handleClick = async () => {
-    //const systemName = event.target.textContent;
-    navigate(path);
-    //localStorage.setItem("systemName", systemName); //setting sytemName in localstorage
   };
 
   useEffect(() => {
@@ -85,7 +75,6 @@ export const MyComplaints = () => {
             <ul id="Clist" style={{ listStyleType: "none", padding: 0 }}>
               {systems.map((item, index) => (
                 <li
-                  onClick={handleClick}
                   key={index}
                   style={{
                     display:
