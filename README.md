@@ -10,7 +10,7 @@ Creation of a website to handle maintenance requests or reports of systems in ou
 
 ## Usage
 
-Provide instructions on how to use your project.
+'npm start' to start the app
 
 ## Contributing
 
@@ -28,4 +28,3 @@ This project is licensed under the [Your License] - see the [LICENSE.md] file fo
 ## Contact
 
 For questions or feedback, please contact [Your Email] or open an issue on GitHub.
-
