@@ -1,0 +1,111 @@
+
+  
+  .box{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontal centering */
+    justify-content: center; /* Vertical centering */
+  }
+  .Minput{
+    display:flex;
+    align-items:center;
+    margin:auto;
+    width: 525px;
+    height:50px;
+    background:#eaeaea;
+    border-radius:6px;
+    border: 2px solid black;
+}
+
+
+.Minput input{
+    height:50px;
+    width:400px;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#797979;
+    font-size: 19px;
+    transition: font-size 0.3s ease; /* Add transition for font size */
+    
+}
+.Minput img{
+  margin: 0px 10px;
+  width: 7%;
+}
+
+.Minput:hover {
+  background-color: #000000cc; /* Change the background color on hover */
+  transform: scale(1.05);
+}
+.Minput:hover h4{
+    color: white;
+}
+
+  
+.Minput input:hover {
+  font-size: 25px; /* Increase font size on hover */
+}
+
+h4{
+  color: black;
+}
+h4:hover{
+  color: white;
+}
+
+
+/* Maintenance.css */
+/* Style for the input box */
+#Complaint {
+  width: 502px;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border: 2px solid black;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background:#eaeaea;
+}
+
+/* Style for the placeholder */
+#Complaint::placeholder {
+  color: #999;
+  font-style: italic;
+}
+#ComplaintBox{
+  width: 525px;
+  height: 300px;
+}
+
+/* Style for the submit button */
+#ComplaintBox button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#ComplaintBox button:hover {
+  background-color: #0056b3;
+}
+
+/* Optional: Style for the form label */
+#ComplaintBox label {
+  font-weight: bold;
+}
+textarea{
+  resize: none;
+}
+
+
+
+
+
+
+
+
