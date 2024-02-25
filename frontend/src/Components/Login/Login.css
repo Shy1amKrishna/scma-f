@@ -60,9 +60,8 @@
     background:transparent;
     border:none;
     outline:none;
-    color:#eaeaea;
+    color:#000000;
     font-size: 19px;
-    
 }
 
 .submit-container{
@@ -147,3 +146,11 @@ a:hover{
     justify-content: center;
     margin:auto;
 }
+.dialog{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin:auto;
+}
+
+
