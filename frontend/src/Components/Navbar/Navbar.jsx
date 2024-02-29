@@ -34,7 +34,7 @@ export const Navbar = () => {
       </a>
       {isLogged === "true" && mode === "User" ? (
         <a className="active" href="/MyComplaints">
-          My complaints
+          Complaints
         </a>
       ) : null}
       {isLogged === "true" && mode === "Admin" ? (

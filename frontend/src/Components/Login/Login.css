@@ -153,4 +153,35 @@ a:hover{
     margin:auto;
 }
 
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .container {
+        margin-top:0px;
+        max-width: 100%; /* Adjusted width for smaller screens */
+        border-radius:0px;
+        padding-bottom:100%;
+    }
+
+    .Linputs {
+        margin: 30px auto; /* Adjusted margin for smaller screens */
+        width: 95%; /* Adjusted width for smaller screens */
+    }
+
+    .Linput {
+        height: 60px; /* Adjusted height for smaller screens */
+        width: 95%
+    }
+
+    .Linput h2 {
+        font-size: 1em; /* Adjusted font size for smaller screens */
+    }
+    .dialog2{
+        margin: 30px auto;
+        width: 95%
+    }
+    .submit-container{
+        margin: 30px auto;
+        width: 95%
+    }
+}
 
