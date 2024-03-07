@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const connect = mongoose.connect("mongodb://localhost:27017/login");
-//const connect = mongoose.connect(
-//  "mongodb+srv://sayoojsayana123:atlas9997%40@scma-cluster.bjzuqa1.mongodb.net/?retryWrites=true&w=majority&appName=scma-cluster"
-//);
+//const connect = mongoose.connect("mongodb://localhost:27017/login");
+const connect = mongoose.connect(
+  "mongodb+srv://sayoojsayana123:atlas9997%40@scma-cluster.bjzuqa1.mongodb.net/?retryWrites=true&w=majority&appName=scma-cluster"
+);
 
 // Check connection
 connect
