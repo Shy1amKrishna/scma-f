@@ -4,6 +4,7 @@ h1 {
 }
 
 .Mcontainer1 {
+    display: inline-flex;
     padding-top: 100px;
     width: 100%;
     height: 100%;
@@ -15,7 +16,7 @@ h1 {
     flex-direction: column;
     margin-left: auto;
     align-items: center;
-    max-width: 80vh; /* Adjusted width to be more responsive */
+    width: 80vh; /* Adjusted width to be more responsive */
     background: url("../Assets/background.jpg") no-repeat fixed;
     background-size: cover;
     height: 100vh;
@@ -45,12 +46,12 @@ h1 {
 
 .input:hover {
     background-color: #000000cc;
-    transform: scale(1.1);
+    
 }
 
 .input h2 {
     font-size: 1.25em; /* Adjusted font size using relative unit */
-    transition: font-size 0.3s ease;
+    
 }
 
 .input:hover h2 {
@@ -60,7 +61,6 @@ h1 {
 
 .cool-heading {
     color: #000000;
-    font-family: 'Arial', sans-serif;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -70,7 +70,10 @@ h1 {
 
 .cool-heading:hover {
     color: #ffffff;
-    transform: scale(1.1);
+    
+}
+#big_text{
+    font-size: 50px;
 }
 
 

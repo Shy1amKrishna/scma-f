@@ -20,8 +20,9 @@ export const Modes = () => {
     <>
       <Navbar />
       <div className="Mcontainer1">
+        <p id="big_text">A work of students</p>
         <div className="Mcontainer2">
-          <h1 className="cool-heading">SCMA</h1>
+          <h1 className="cool-heading">Modes</h1>
           <div className="inputs">
             <div className="input" onClick={() => handleUserClick("/login")}>
               <h2>USER</h2>
