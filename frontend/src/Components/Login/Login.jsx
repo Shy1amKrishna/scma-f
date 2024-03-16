@@ -4,7 +4,6 @@ import user_icon from "../Assets/person.png";
 import password_icon from "../Assets/password.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Navbar } from "../Navbar/Navbar";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -88,7 +87,6 @@ export const Login = () => {
 
   return (
     <>
-      <Navbar />
       <div className="container">
         <div className="header">
           <div className="text">Login</div>

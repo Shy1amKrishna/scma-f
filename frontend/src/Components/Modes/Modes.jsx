@@ -1,7 +1,7 @@
 import React from "react";
 import "./Modes.css";
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "../Navbar/Navbar";
+import { Navbar } from "../Navbar2/Navbar";
 
 export const Modes = () => {
   const navigate = useNavigate();
@@ -19,8 +19,8 @@ export const Modes = () => {
   return (
     <>
       <Navbar />
-      <div className="container1">
-        <div className="container2">
+      <div className="Mcontainer1">
+        <div className="Mcontainer2">
           <h1 className="cool-heading">SCMA</h1>
           <div className="inputs">
             <div className="input" onClick={() => handleUserClick("/login")}>

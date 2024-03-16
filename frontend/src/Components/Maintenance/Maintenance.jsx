@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Maintenance.css";
 import Computer_icon from "../Assets/computer.png";
 import axios from "axios"; // Import Axios library
-import { Navbar } from "../Navbar/Navbar";
+import { Navbar } from "../Navbar2/Navbar";
 
 export const Maintenance = () => {
   const [complaint, setComplaint] = useState("");

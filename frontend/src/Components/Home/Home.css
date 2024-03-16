@@ -4,6 +4,7 @@ h1 {
 }
 
 .container1 {
+    padding-top: 100px;
     width: 100%;
     height: 100%;
     background-color: #00000083;
@@ -12,7 +13,7 @@ h1 {
 .container2 {
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin-left: auto;
     align-items: center;
     max-width: 80vh; /* Adjusted width to be more responsive */
     background: url("../Assets/background.jpg") no-repeat fixed;

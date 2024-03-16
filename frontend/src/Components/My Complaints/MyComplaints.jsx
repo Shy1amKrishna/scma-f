@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./MyComplaints.css";
 import ComputerIcon from "../Assets/computer.png"; // Renamed variable to follow convention
-import { Navbar } from "../Navbar/Navbar";
+import { Navbar } from "../Navbar2/Navbar";
 
 export const MyComplaints = () => {
   const loggedUser = localStorage.getItem("userName");
