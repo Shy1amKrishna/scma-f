@@ -11,6 +11,7 @@ import { About } from "./Components/About/About";
 import { Signup } from "./Components/Signup/Signup";
 //import { Navbar } from "./Components/Navbar/Navbar";
 import { Modes } from "./Components/Modes/Modes";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
