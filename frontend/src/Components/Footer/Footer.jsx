@@ -4,7 +4,7 @@ import logo_simat from "../Assets/logo-simat.png";
 const Footer = () => {
   return (
     <div className="footer">
-      <img src={logo_simat} alt="logo" />
+      <img id="logo" src={logo_simat} alt="logo" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
