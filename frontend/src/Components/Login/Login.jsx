@@ -44,7 +44,9 @@ export const Login = () => {
 
         // Redirect or perform other actions upon successful login
         if (response.data === "Login successful") {
-          Mode === "Admin" ? navigate("/UserComplaints") : navigate("/home");
+          Mode === "Admin"
+            ? navigate("/UserComplaints")
+            : navigate("/Maintenance");
           localStorage.setItem("userName", username); //setting username in local storage
           localStorage.setItem("isLogged", "true"); //setting  logged state in local storage
         }

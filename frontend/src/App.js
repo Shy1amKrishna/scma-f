@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import { Home } from "./Components/Home/Home";
 import { Login } from "./Components/Login/Login";
 import { NotFoundPage } from "./Components/NotFoundPage/NotFoundPage";
 import { UserComplaints } from "./Components/User Complaints/UserComplaints";
@@ -20,7 +19,6 @@ function App() {
         <Route path="/" element={<Modes />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/UserComplaints" element={<UserComplaints />} />
         <Route path="/MyComplaints" element={<MyComplaints />} />
         <Route path="/Maintenance" element={<Maintenance />} />
