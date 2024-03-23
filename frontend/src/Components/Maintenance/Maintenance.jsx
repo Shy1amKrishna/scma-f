@@ -64,7 +64,7 @@ export const Maintenance = () => {
           <div className="underline"></div>
           <div className="box">
             <form onSubmit={handleSubmit}>
-              <div className="Cinput">
+              <div className="Minput">
                 <img
                   src={Computer_icon}
                   alt="Computer Icon"
@@ -73,6 +73,7 @@ export const Maintenance = () => {
                 <input
                   type="text"
                   placeholder="System name?"
+                  required
                   onChange={(e) => {
                     setSystemName(e.target.value);
                   }}
@@ -86,6 +87,7 @@ export const Maintenance = () => {
                   type="text"
                   name="Complaint"
                   placeholder="Enter the problem"
+                  required
                   value={complaint}
                   onChange={(e) => {
                     setComplaint(e.target.value);

@@ -66,9 +66,6 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.cool-heading:hover {
-  color: #ffffff;
-}
 
 .box{
   margin: 10px;
@@ -91,7 +88,7 @@ h1 {
 
 .Minput input{
   height:50px;
-  width:400px;
+  width:100%;
   background:transparent;
   border:none;
   outline:none;
@@ -103,19 +100,6 @@ h1 {
 .Minput img{
 margin: 0px 10px;
 width: 7%;
-}
-
-.Minput:hover {
-background-color: #000000cc; /* Change the background color on hover */
-transform: scale(1.05);
-}
-.Minput:hover h4{
-  color: white;
-}
-
-
-.Minput input:hover {
-font-size: 25px; /* Increase font size on hover */
 }
 
 h4{
@@ -152,16 +136,16 @@ height: 300px;
 
 /* Style for the submit button */
 #ComplaintBox button {
-background-color: #007bff;
+background-color: #000000;
+border: 2px solid black;
 color: #fff;
 padding: 10px 20px;
-border: none;
 border-radius: 5px;
 cursor: pointer;
 }
 
 #ComplaintBox button:hover {
-background-color: #0056b3;
+border: 2px solid rgb(255, 255, 255);
 }
 
 /* Optional: Style for the form label */
