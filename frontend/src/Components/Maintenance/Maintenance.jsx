@@ -79,6 +79,14 @@ export const Maintenance = () => {
                   }}
                 />
               </div>
+              <div id="lab">
+                <label htmlFor="labs">Select lab:</label>
+                <select id="labs" name="labs">
+                  <option value="Compiler Lab">Compiler Lab</option>
+                  <option value="Software Lab">Software Lab</option>
+                  <option value="Programming Lab">Programming Lab</option>
+                </select>
+              </div>
               <div id="ComplaintBox">
                 <label htmlFor="Complaint">Complaint:</label>
                 <textarea
