@@ -8,7 +8,6 @@ import { Routes, Route } from "react-router-dom";
 import { Maintenance } from "./Components/Maintenance/Maintenance";
 import { About } from "./Components/About/About";
 import { Signup } from "./Components/Signup/Signup";
-//import { Navbar } from "./Components/Navbar/Navbar";
 import { Modes } from "./Components/Modes/Modes";
 import Footer from "./Components/Footer/Footer";
 

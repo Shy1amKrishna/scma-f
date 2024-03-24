@@ -21,8 +21,7 @@ export const Modes = () => {
       <Navbar />
       <div className="Mcontainer1">
         <div className="welcome_text">
-          <p id="big_text">A work of students</p>
-          <p id="medium_text">for the students</p>
+          <p id="big_text">instructions</p>
         </div>
         <div className="Mcontainer2">
           <h1 className="cool-heading">Modes</h1>
