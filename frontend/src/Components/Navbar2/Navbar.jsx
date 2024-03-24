@@ -29,7 +29,14 @@ export const Navbar = () => {
   };
   return (
     <div className="navbar">
-      <img className="logo" src={Logo} alt="logo" />
+      <img
+        className="logo"
+        src={Logo}
+        alt="logo"
+        onClick={() => {
+          navigate("/");
+        }}
+      />
       <nav>
         <ul className="nav_links">
           {isLogged === "true" && mode === "User" ? (
@@ -48,7 +55,7 @@ export const Navbar = () => {
         </ul>
       </nav>
       {isLogged === "true" ? (
-        <a className="cta" href="#">
+        <a className="cta" href="null">
           <p>{userName}</p>
           <button id="button" onClick={LogOut}>
             Logout
