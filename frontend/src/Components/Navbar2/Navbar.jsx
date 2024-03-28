@@ -55,7 +55,7 @@ export const Navbar = () => {
         </ul>
       </nav>
       {isLogged === "true" ? (
-        <a className="cta" href="null">
+        <a className="cta" href="/">
           <p>{userName}</p>
           <button id="button" onClick={LogOut}>
             Logout

@@ -9,7 +9,7 @@ export const Maintenance = () => {
   const [complaint, setComplaint] = useState("");
   const [systemName, setSystemName] = useState("");
   const UserName = localStorage.getItem("userName");
-  const Lab = localStorage.getItem("Lab");
+  let Lab;
   //console.log(Lab);
   const navigate = useNavigate();
   const backendAddress = "http://localhost:5000/complaints";
@@ -30,10 +30,16 @@ export const Maintenance = () => {
 
   function reset() {
     setComplaint("");
-    navigate("../home");
+    navigate("/");
+  }
+
+  function getOption() {
+    let selectElement = document.querySelector("#labs");
+    Lab = selectElement.value;
   }
 
   async function handleSubmit(e) {
+    getOption();
     e.preventDefault();
     if (complaint.length > 10 && complaint.length < 500) {
       try {
